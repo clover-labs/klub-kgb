@@ -20,8 +20,8 @@ RUN npm run build
 # Stage 2: Production stage
 FROM node:22-alpine AS runner
 
-# Install dumb-init for proper signal handling
-RUN apk add --no-cache dumb-init
+# Install dumb-init and curl for proper signal handling and health checks
+RUN apk add --no-cache dumb-init curl
 
 # Create app user for security
 RUN addgroup -g 1001 -S nodejs
@@ -51,9 +51,9 @@ EXPOSE 3000
 # Switch to non-root user
 USER sveltekit
 
-# Health check - using IPv4 localhost to avoid IPv6 connection issues
+# Health check - using curl for reliable health checking
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://127.0.0.1:3000/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })" || exit 1
+  CMD curl -f http://localhost:3000/health || exit 1
 
 # Start the application with dumb-init
 ENTRYPOINT ["dumb-init", "--"]
