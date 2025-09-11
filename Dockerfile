@@ -48,13 +48,13 @@ ENV HOST=0.0.0.0
 # Expose port
 EXPOSE 3000
 
+# Health check - using curl for reliable health checking (before user switch)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:3000/health || exit 1
+
 # Switch to non-root user
 USER sveltekit
 
-# Health check - using curl for reliable health checking
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:3000/health || exit 1
-
 # Start the application with dumb-init
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["node", "build/server/index.js"] 
+CMD ["node", "build/index.js"] 
