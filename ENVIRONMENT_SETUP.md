@@ -4,18 +4,18 @@ Create a `.env` file in the root directory with the following variables:
 
 ```env
 # Directus Configuration
-LANDING_DIRECTUS_URL=http://localhost:8055
-LANDING_DIRECTUS_COLLECTION_NAME=blog_posts
+PUBLIC_LANDING_DIRECTUS_URL=http://localhost:8055
+PUBLIC_LANDING_DIRECTUS_COLLECTION_NAME=blog_posts
 ```
 
-**Note**: The `LANDING_` prefix is configured in `vite.config.ts` to avoid conflicts with existing environment variables in deployment platforms like Coolify.
+**Note**: The `PUBLIC_` prefix is required by SvelteKit for client-side accessible environment variables. This is a security feature to prevent accidental exposure of sensitive data.
 
 ## Environment Variables
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `LANDING_DIRECTUS_URL` | Directus instance URL | `https://cms.cloverlabs.dev` |
-| `LANDING_DIRECTUS_COLLECTION_NAME` | Collection name for blog posts | `landing_test_posts` |
+| `PUBLIC_LANDING_DIRECTUS_URL` | Directus instance URL | `https://cms.cloverlabs.dev` |
+| `PUBLIC_LANDING_DIRECTUS_COLLECTION_NAME` | Collection name for blog posts | `landing_test_posts` |
 
 ## Directus Collection Schema
 

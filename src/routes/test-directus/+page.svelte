@@ -44,8 +44,8 @@
 			<h3>API Configuration:</h3>
 			<ul>
 				<li><strong>API Endpoint:</strong> /api/blog</li>
-				<li><strong>Backend Directus URL:</strong> {import.meta.env.LANDING_DIRECTUS_URL || 'Not set'}</li>
-				<li><strong>Collection:</strong> {import.meta.env.LANDING_DIRECTUS_COLLECTION_NAME || 'Not set'}</li>
+				<li><strong>Backend Directus URL:</strong> {import.meta.env.PUBLIC_LANDING_DIRECTUS_URL || 'Not set'}</li>
+				<li><strong>Collection:</strong> {import.meta.env.PUBLIC_LANDING_DIRECTUS_COLLECTION_NAME || 'Not set'}</li>
 			</ul>
 		</div>
 		

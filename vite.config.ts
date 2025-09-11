@@ -5,6 +5,5 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	define: {
 		'process.env': process.env
-	},
-	envPrefix: 'LANDING_'
+	}
 });
