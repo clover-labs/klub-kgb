@@ -41,8 +41,8 @@ Create a `.env` file in the root directory:
 
 ```env
 # Directus Configuration
-VITE_DIRECTUS_URL=http://localhost:8055
-VITE_DIRECTUS_COLLECTION_NAME=blog_posts
+PUBLIC_DIRECTUS_URL=http://localhost:8055
+PUBLIC_DIRECTUS_COLLECTION_NAME=blog_posts
 ```
 
 ### 3. Directus Setup
@@ -144,8 +144,8 @@ src/
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `VITE_DIRECTUS_URL` | Directus instance URL | `http://localhost:8055` |
-| `VITE_DIRECTUS_COLLECTION_NAME` | Collection name for blog posts | `blog_posts` |
+| `PUBLIC_DIRECTUS_URL` | Directus instance URL | `http://localhost:8055` |
+| `PUBLIC_DIRECTUS_COLLECTION_NAME` | Collection name for blog posts | `blog_posts` |
 
 ## Deployment
 
