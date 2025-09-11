@@ -45,6 +45,8 @@ LANDING_DIRECTUS_URL=http://localhost:8055
 LANDING_DIRECTUS_COLLECTION_NAME=blog_posts
 ```
 
+**Note**: The `LANDING_` prefix is configured in `vite.config.ts` to avoid conflicts with existing environment variables in deployment platforms like Coolify.
+
 ### 3. Directus Setup
 
 1. **Install Directus** (if not already installed):

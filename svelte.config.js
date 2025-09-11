@@ -11,8 +11,7 @@ const config = {
 		// Use Node.js adapter for production deployment
 		adapter: adapter({
 			out: 'build',
-			precompress: false,
-			envPrefix: 'LANDING_'
+			precompress: false
 		})
 	}
 };
