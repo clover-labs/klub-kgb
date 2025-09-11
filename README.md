@@ -41,8 +41,8 @@ Create a `.env` file in the root directory:
 
 ```env
 # Directus Configuration
-APP_DIRECTUS_URL=http://localhost:8055
-APP_DIRECTUS_COLLECTION_NAME=blog_posts
+LANDING_DIRECTUS_URL=http://localhost:8055
+LANDING_DIRECTUS_COLLECTION_NAME=blog_posts
 ```
 
 ### 3. Directus Setup
@@ -144,8 +144,8 @@ src/
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `APP_DIRECTUS_URL` | Directus instance URL | `http://localhost:8055` |
-| `APP_DIRECTUS_COLLECTION_NAME` | Collection name for blog posts | `blog_posts` |
+| `LANDING_DIRECTUS_URL` | Directus instance URL | `http://localhost:8055` |
+| `LANDING_DIRECTUS_COLLECTION_NAME` | Collection name for blog posts | `blog_posts` |
 
 ## Deployment
 

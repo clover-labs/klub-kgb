@@ -12,7 +12,7 @@ const config = {
 		adapter: adapter({
 			out: 'build',
 			precompress: false,
-			envPrefix: 'APP_'
+			envPrefix: 'LANDING_'
 		})
 	}
 };

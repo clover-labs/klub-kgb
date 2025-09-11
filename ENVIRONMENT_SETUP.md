@@ -4,16 +4,16 @@ Create a `.env` file in the root directory with the following variables:
 
 ```env
 # Directus Configuration
-APP_DIRECTUS_URL=http://localhost:8055
-APP_DIRECTUS_COLLECTION_NAME=blog_posts
+LANDING_DIRECTUS_URL=http://localhost:8055
+LANDING_DIRECTUS_COLLECTION_NAME=blog_posts
 ```
 
 ## Environment Variables
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `APP_DIRECTUS_URL` | Directus instance URL | `https://cms.cloverlabs.dev` |
-| `APP_DIRECTUS_COLLECTION_NAME` | Collection name for blog posts | `landing_test_posts` |
+| `LANDING_DIRECTUS_URL` | Directus instance URL | `https://cms.cloverlabs.dev` |
+| `LANDING_DIRECTUS_COLLECTION_NAME` | Collection name for blog posts | `landing_test_posts` |
 
 ## Directus Collection Schema
 
