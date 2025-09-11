@@ -3,11 +3,11 @@ import type { BlogPost } from './types.js';
 import { env } from './env.js';
 
 // Create Directus client with proper configuration
-const client = createDirectus(env.DIRECTUS_URL).with(rest());
+const client = createDirectus(env.PUBLIC_DIRECTUS_URL).with(rest());
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
 	try {
-		const posts = await client.request(readItems(env.DIRECTUS_COLLECTION_NAME, {
+		const posts = await client.request(readItems(env.PUBLIC_DIRECTUS_COLLECTION_NAME, {
 			fields: ['id', 'status', 'date_created', 'date_updated', 'image', 'title', 'description'],
 			sort: ['-date_created'], // Sort by newest first
 			filter: {
@@ -26,7 +26,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 
 export async function getBlogPost(id: string): Promise<BlogPost | null> {
 	try {
-		const post = await client.request(readItems(env.DIRECTUS_COLLECTION_NAME, {
+		const post = await client.request(readItems(env.PUBLIC_DIRECTUS_COLLECTION_NAME, {
 			fields: ['id', 'status', 'date_created', 'date_updated', 'image', 'title', 'description', 'content'],
 			filter: {
 				id: {
