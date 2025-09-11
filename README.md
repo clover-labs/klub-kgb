@@ -45,7 +45,7 @@ PUBLIC_LANDING_DIRECTUS_URL=http://localhost:8055
 PUBLIC_LANDING_DIRECTUS_COLLECTION_NAME=blog_posts
 ```
 
-**Note**: The `PUBLIC_` prefix is required by SvelteKit for client-side accessible environment variables. This is a security feature to prevent accidental exposure of sensitive data.
+**Note**: The `PUBLIC_` prefix is required by SvelteKit for client-side accessible environment variables. These variables are accessed using `$env/dynamic/public` imports, not `import.meta.env`. This is a security feature to prevent accidental exposure of sensitive data.
 
 ### 3. Directus Setup
 

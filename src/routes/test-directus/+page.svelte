@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import { env as publicEnv } from '$env/dynamic/public';
 	
 	export let data: PageData;
 	const { success, posts, message, error } = data;
@@ -44,8 +45,8 @@
 			<h3>API Configuration:</h3>
 			<ul>
 				<li><strong>API Endpoint:</strong> /api/blog</li>
-				<li><strong>Backend Directus URL:</strong> {import.meta.env.PUBLIC_LANDING_DIRECTUS_URL || 'Not set'}</li>
-				<li><strong>Collection:</strong> {import.meta.env.PUBLIC_LANDING_DIRECTUS_COLLECTION_NAME || 'Not set'}</li>
+				<li><strong>Backend Directus URL:</strong> {publicEnv.PUBLIC_LANDING_DIRECTUS_URL || 'Not set'}</li>
+				<li><strong>Collection:</strong> {publicEnv.PUBLIC_LANDING_DIRECTUS_COLLECTION_NAME || 'Not set'}</li>
 			</ul>
 		</div>
 		
