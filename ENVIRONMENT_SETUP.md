@@ -6,6 +6,9 @@ Create a `.env` file in the root directory with the following variables:
 # Directus Configuration
 PUBLIC_LANDING_DIRECTUS_URL=http://localhost:8055
 PUBLIC_LANDING_DIRECTUS_COLLECTION_NAME=blog_posts
+
+# Newsletter Configuration
+PUBLIC_APP_NAME=Landing Test App
 ```
 
 **Note**: The `PUBLIC_` prefix is required by SvelteKit for client-side accessible environment variables. These variables are accessed using `$env/dynamic/public` imports, not `import.meta.env`. This is a security feature to prevent accidental exposure of sensitive data.
@@ -16,6 +19,7 @@ PUBLIC_LANDING_DIRECTUS_COLLECTION_NAME=blog_posts
 |----------|-------------|---------|
 | `PUBLIC_LANDING_DIRECTUS_URL` | Directus instance URL | `https://cms.cloverlabs.dev` |
 | `PUBLIC_LANDING_DIRECTUS_COLLECTION_NAME` | Collection name for blog posts | `landing_test_posts` |
+| `PUBLIC_APP_NAME` | Application name for newsletter subscriptions | `Landing Test App` |
 
 ## Directus Collection Schema
 

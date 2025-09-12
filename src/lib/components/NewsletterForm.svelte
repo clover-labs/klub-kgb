@@ -19,15 +19,27 @@
 		message = '';
 
 		try {
-			// Simulate API call - replace with actual newsletter signup logic
-			await new Promise(resolve => setTimeout(resolve, 1000));
-			
-			message = 'Thank you for subscribing!';
-			messageType = 'success';
-			email = '';
-			
-			dispatch('subscribe', { email });
+			const response = await fetch('/api/newsletter', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ email })
+			});
+
+			const data = await response.json();
+
+			if (response.ok) {
+				message = 'Thank you for subscribing!';
+				messageType = 'success';
+				email = '';
+				dispatch('subscribe', { email });
+			} else {
+				message = data.error || 'Something went wrong. Please try again.';
+				messageType = 'error';
+			}
 		} catch (error) {
+			console.error('Newsletter subscription error:', error);
 			message = 'Something went wrong. Please try again.';
 			messageType = 'error';
 		} finally {
