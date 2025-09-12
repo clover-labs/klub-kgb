@@ -24,9 +24,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		const payload = {
 			name: 'empty',
 			email: email,
-			'consent.given': 'true',
-			'consent.marketing': 'true',
-			'consent.timestamp': currentTime,
+			consent:{given: 'true',marketing: 'true',timestamp: currentTime},
 			submittedAt: currentTime,
 			source: env.PUBLIC_APP_NAME,
 			ipAddress: ipAddress
