@@ -22,48 +22,12 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		// Prepare the payload for the webhook
 		const currentTime = new Date().toISOString();
 		const payload = {
-			properties: {
-				"Double-opt in": {
-					checkbox: true
-				},
-				"Name": {
-					id: "newsletter-subscription",
-					name: "Newsletter Subscription",
-					start: currentTime
-				},
-				"Email": {
-					email: email
-				},
-				"Source": {
-					rich_text: [
-						{
-							text: {
-								content: env.PUBLIC_APP_NAME
-							}
-						}
-					]
-				},
-				"IP Address": {
-					rich_text: [
-						{
-							text: {
-								content: ipAddress
-							}
-						}
-					]
-				},
-				"Submitted At": {
-					date: {
-						start: currentTime
-					}
-				},
-				"Consent Given": {
-					checkbox: true
-				},
-				"Marketing Consent": {
-					checkbox: true
-				}
-			}
+			name: 'empty',
+			email: email,
+			consent:{given: true,marketing: true,timestamp: currentTime},
+			submittedAt: currentTime,
+			source: env.PUBLIC_APP_NAME,
+			ipAddress: ipAddress
 		};
 
 		// Send POST request to the webhook
