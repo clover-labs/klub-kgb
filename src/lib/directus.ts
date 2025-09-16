@@ -20,7 +20,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
           "event_date",
           "link",
         ],
-        sort: ["-date_created"], // Sort by newest first
+        sort: ["event_date"], // Sort by event_date ascending (earliest events first)
         filter: {
           status: {
             _eq: "published", // Only get published posts
@@ -49,6 +49,7 @@ export async function getBlogPost(id: string): Promise<BlogPost | null> {
           "title",
           "description",
           "content",
+          "event_date",
         ],
         filter: {
           id: {
