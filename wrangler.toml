@@ -1,15 +1,13 @@
 name = "klub-kgb"
 compatibility_date = "2025-09-16"
+pages_build_output_dir = ".svelte-kit/cloudflare"
 
-[build]
-command = "bun run build"
-
-# Workers Logs
-[observability]
-enabled = true
-
-# Bind resources to your worker
+# Environment variables for your app
 [vars]
 PUBLIC_LANDING_DIRECTUS_URL = "https://cms.cloverlabs.dev"
 PUBLIC_LANDING_DIRECTUS_COLLECTION_NAME = "kgb-posts"
 PUBLIC_APP_NAME = "klub-kgb"
+
+# Workers Logs
+[observability]
+enabled = true
