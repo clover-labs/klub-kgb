@@ -1,179 +1,85 @@
 <script lang="ts">
-	import type { BlogPost } from '$lib/types.js';
-	
-	export let post: BlogPost;
-	
-	function formatDate(dateString: string): string {
-		const date = new Date(dateString);
-		return date.toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		});
+import type { BlogPost } from '$lib/types.js';
+import { crossfade, fade } from 'svelte/transition';
+
+let { post }: { post: BlogPost } = $props();
+
+const [send, receive] = crossfade({
+	duration: 300,
+	fallback(node) {
+		return fade(node, { duration: 400 });
 	}
+});
 	
-	function getImageUrl(imageId: string): string {
-		// Use the Directus asset URL directly
-		return `https://cms.cloverlabs.dev/assets/${imageId}`;
-	}
+let isHovered = $state(false);
+const dividedTitleByPluses = $derived(post.title.split('+'));
+const dayAndMonth = $derived(new Date(post.event_date).toLocaleDateString('sl-SI', {
+	day: '2-digit',
+	month: '2-digit',
+}).replace(/\./g, ''));
+const hour = $derived(new Date(post.event_date).toLocaleTimeString('sl-SI', {
+	hour: '2-digit',
+}).replace(/\./g, ''));
+
 	
-	function getFallbackImage(): string {
-		// Return a simple placeholder image
-		return '/placeholder-image.svg';
-	}
 </script>
 
-<article class="blog-card">
-	<div class="card-image">
+<a href={post.link} class="cursor-pointer" target="_blank">
+	<article class="bg-off-white-100 p-16 w-full h-full relative group" onmouseenter={() => isHovered = true} onmouseleave={() => isHovered = false}>
+		<div tabindex="0" role="link" class="absolute inset-0 bg-transparent group-hover:bg-pitch-black-100/70 transition-all duration-300"></div>
 		<img 
-			src={getImageUrl(post.image)} 
-			alt={post.title}
-			on:error={(e) => {
-				// Fallback to a placeholder if image fails to load
-				const target = e.target;
-				if (target && target instanceof HTMLImageElement) {
-					target.src = getFallbackImage();
-				}
-			}}
+			src={`https://cms.cloverlabs.dev/assets/${post.image}?${post.date_updated || Date.now()}`} 
+			alt={post.title} 
+			class="w-full h-full object-cover" 
 		/>
-	</div>
 	
-	<div class="card-content">
-		<div class="card-meta">
-			<time datetime={post.date_created}>
-				{formatDate(post.date_created)}
-			</time>
+		<!-- Title -->
+		 {#if !isHovered}
+			<h3 class="text-pitch-black-100 absolute top-[12px] left-[3%] flex items-center"  out:send={{key: 'cezanne-title'}} in:receive={{key: 'cezanne-title'}}>
+				<span class="text-3xl md:text-4xl font-calluna-sans-black">{dividedTitleByPluses[0].trim()}</span>
+				{#if dividedTitleByPluses.length > 1}
+					<span class="text-2xl md:text-4xl ml-2 font-calluna-sans-black">+</span>
+					<div class="text-md md:text-lg ml-2 font-calluna-sans-bold leading-tight">
+						{#each dividedTitleByPluses[1].trim().split(' ') as word}
+							<div>{word}</div>
+						{/each}
+					</div>
+				{/if}
+			</h3>
+		{/if}
+		<!-- Day and Month -->
+		<div class="absolute right-8 top-[15.75rem] rotate-90 origin-right flex items-start justify-start gap-4">
+			<span class="text-pitch-black-100 text-5xl font-calluna-sans-black mb-2 group-hover:hidden">{dayAndMonth.replace(' ', '.')}</span>
+			{#if !isHovered}
+				<span class="text-mean-green-500 text-7xl font-cezanne leading-12 mt-2" out:send={{key: 'cezanne-date'}} in:receive={{key: 'cezanne-date'}}>{dayAndMonth.replace(' ', '.')}</span>
+			{/if}
+		</div>
+	
+		<!-- Hour -->
+		<div class="absolute left-9 -bottom-3 -rotate-90 origin-left flex items-start gap-4">
+			<span class="text-pitch-black-100 text-5xl font-calluna-sans-black mb-2 group-hover:hidden">{hour}</span>
+			{#if !isHovered}
+				<span class="text-mean-green-500 text-7xl font-cezanne leading-12 mt-2" out:send={{key: 'cezanne-hour'}} in:receive={{key: 'cezanne-hour'}}>{hour}</span>
+			{/if}
+		</div>
+	
+		{#if isHovered}
+			<!-- Centered Cezanne Text -->
+			<div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8">
+				<h3 class="text-really-white-100 text-5xl font-calluna-sans-semibold leading-12" in:receive={{key: 'cezanne-title'}} out:send={{key: 'cezanne-title'}}>{dividedTitleByPluses[0].trim()}</h3>
+				<span class="text-prototype-orange-500 text-6xl font-calluna-sans-semibold leading-12" in:receive={{key: 'cezanne-date'}} out:send={{key: 'cezanne-date'}}>{dayAndMonth.replace(' ', '.')}</span>
+				<span class="text-prototype-orange-500 text-6xl font-calluna-sans-semibold leading-12" in:receive={{key: 'cezanne-hour'}} out:send={{key: 'cezanne-hour'}}>{hour}</span>
+			</div>
+		{/if}
+	
+		<!-- Location -->
+		<div class="absolute right-4 bottom-2 origin-right flex items-center gap-4 max-w-[70%]">
+			<div class="flex flex-col">
+				<span class="text-pitch-black-100 text-xl font-calluna-sans-bold leading-4">Vojašniški trg 5</span>
+				<span class="text-pitch-black-100 text-xl font-calluna-sans-bold leading-4">2000 Maribor</span>
+			</div>
+			<span class="text-pitch-black-100 text-5xl font-calluna-sans-black leading-12">KGB</span>
 		</div>
 		
-		<h3 class="card-title">
-			<a href="/blog/{post.id}">{post.title}</a>
-		</h3>
-		
-		<p class="card-description">
-			{post.description}
-		</p>
-		
-		<a href="/blog/{post.id}" class="read-more">
-			Read More
-			<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-				<path d="M5 12h14M12 5l7 7-7 7"/>
-			</svg>
-		</a>
-	</div>
-</article>
-
-<style>
-	.blog-card {
-		background: white;
-		border-radius: 12px;
-		overflow: hidden;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.blog-card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-	}
-
-	.card-image {
-		width: 100%;
-		height: 200px;
-		overflow: hidden;
-		position: relative;
-	}
-
-	.card-image img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		transition: transform 0.3s ease;
-	}
-
-	.blog-card:hover .card-image img {
-		transform: scale(1.05);
-	}
-
-	.card-content {
-		padding: 24px;
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.card-meta {
-		margin-bottom: 12px;
-	}
-
-	.card-meta time {
-		font-size: 14px;
-		color: #666;
-		font-weight: 500;
-	}
-
-	.card-title {
-		margin: 0 0 12px 0;
-		font-size: 1.5rem;
-		font-weight: 700;
-		line-height: 1.3;
-	}
-
-	.card-title a {
-		color: #333;
-		text-decoration: none;
-		transition: color 0.3s ease;
-	}
-
-	.card-title a:hover {
-		color: #667eea;
-	}
-
-	.card-description {
-		color: #666;
-		line-height: 1.6;
-		margin: 0 0 20px 0;
-		flex: 1;
-		display: -webkit-box;
-		-webkit-line-clamp: 3;
-		line-clamp: 3;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-	}
-
-	.read-more {
-		display: inline-flex;
-		align-items: center;
-		gap: 8px;
-		color: #667eea;
-		text-decoration: none;
-		font-weight: 600;
-		font-size: 14px;
-		transition: color 0.3s ease;
-		margin-top: auto;
-	}
-
-	.read-more:hover {
-		color: #764ba2;
-	}
-
-	.read-more svg {
-		transition: transform 0.3s ease;
-	}
-
-	.read-more:hover svg {
-		transform: translateX(4px);
-	}
-
-	@media (max-width: 768px) {
-		.card-content {
-			padding: 20px;
-		}
-		
-		.card-title {
-			font-size: 1.25rem;
-		}
-	}
-</style>
+	</article>
+</a>

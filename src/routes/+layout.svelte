@@ -1,5 +1,5 @@
 <script lang="ts">
-	import favicon from "$lib/assets/favicon.svg";
+	import favicon from "$lib/assets/favicon.png";
 	import "../app.css";
 </script>
 
@@ -17,15 +17,3 @@
 
 <slot />
 
-<style>
-	body {
-		background-color: #f0f0f0;
-		padding: 10px;
-	}
-
-	body {
-		border: 1px solid red;
-		padding: 10px;
-		margin: 10px;
-	}
-</style>

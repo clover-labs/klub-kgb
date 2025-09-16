@@ -1,45 +1,55 @@
-/* Import Design System */
-@import "./lib/styles/variables.css";
-@import "./lib/styles/base.css";
-@import "./lib/styles/components.css";
-@import "./lib/styles/utilities.css";
-@import "./lib/styles/figma-extractor.css";
+@import "tailwindcss";
+@import "./fonts.css";
+
+@theme {
+  --color-mean-green-900: #003728;
+  --color-mean-green-500: #b3bd51;
+  --color-mean-green-400: #d1da7a;
+  --color-prototype-orange-500: #ff9f37;
+  --color-prototype-orange-400: #ffa366;
+  --color-brick-red-500: #ef173a;
+  --color-brick-red-200: #ff8181;
+  --color-brick-red-900: #460a0a;
+  --color-pitch-black-100: #000000;
+  --color-really-white-100: #ffffff;
+  --color-off-white-100: #f5f5f5;
+}
 
 /* Additional Global Styles */
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-	width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-	background: var(--color-gray-100);
+  background: var(--color-gray-100);
 }
 
 ::-webkit-scrollbar-thumb {
-	background: var(--color-gray-300);
-	border-radius: var(--radius-full);
+  background: var(--color-gray-300);
+  border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--color-gray-400);
+  background: var(--color-gray-400);
 }
 
 /* Selection styles */
 ::selection {
-	background-color: var(--color-primary);
-	color: var(--color-white);
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 /* Focus visible for better accessibility */
 :focus-visible {
-	outline: 2px solid var(--color-primary);
-	outline-offset: 2px;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }

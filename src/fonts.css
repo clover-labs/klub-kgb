@@ -1,0 +1,266 @@
+/* Calluna Font Family */
+@font-face {
+  font-family: "Calluna";
+  src: url("/fonts/calluna/CallunaLight.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna";
+  src: url("/fonts/calluna/CallunaRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna";
+  src: url("/fonts/calluna/CallunaSemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna";
+  src: url("/fonts/calluna/CallunaBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna";
+  src: url("/fonts/calluna/CallunaBlack.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna";
+  src: url("/fonts/calluna/CallunaItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna";
+  src: url("/fonts/calluna/CallunaSemiBoldItalic.otf") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna";
+  src: url("/fonts/calluna/CallunaBoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Calluna Sans Font Family */
+@font-face {
+  font-family: "Calluna Sans";
+  src: url("/fonts/calluna-sans/CallunaSansLight.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna Sans";
+  src: url("/fonts/calluna-sans/CallunaSans.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna Sans";
+  src: url("/fonts/calluna-sans/CallunaSansSemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna Sans";
+  src: url("/fonts/calluna-sans/CallunaSansBold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna Sans";
+  src: url("/fonts/calluna-sans/CallunaSansBlack.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna Sans";
+  src: url("/fonts/calluna-sans/CallunaSansItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna Sans";
+  src: url("/fonts/calluna-sans/CallunaSansLightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna Sans";
+  src: url("/fonts/calluna-sans/CallunaSansSemiBoldItalic.otf")
+    format("opentype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna Sans";
+  src: url("/fonts/calluna-sans/CallunaSansBoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Calluna Sans";
+  src: url("/fonts/calluna-sans/CallunaSansBlackItalic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Cezanne Font */
+@font-face {
+  font-family: "Cezanne";
+  src: url("/fonts/cezzane/CezanneProRegular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Font Classes */
+.font-calluna {
+  font-family: "Calluna", serif;
+}
+
+.font-calluna-light {
+  font-family: "Calluna", serif;
+  font-weight: 300;
+}
+
+.font-calluna-regular {
+  font-family: "Calluna", serif;
+  font-weight: 400;
+}
+
+.font-calluna-semibold {
+  font-family: "Calluna", serif;
+  font-weight: 600;
+}
+
+.font-calluna-bold {
+  font-family: "Calluna", serif;
+  font-weight: 700;
+}
+
+.font-calluna-black {
+  font-family: "Calluna", serif;
+  font-weight: 900;
+}
+
+.font-calluna-italic {
+  font-family: "Calluna", serif;
+  font-style: italic;
+}
+
+.font-calluna-semibold-italic {
+  font-family: "Calluna", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.font-calluna-bold-italic {
+  font-family: "Calluna", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Calluna Sans Classes */
+.font-calluna-sans {
+  font-family: "Calluna Sans", sans-serif;
+}
+
+.font-calluna-sans-light {
+  font-family: "Calluna Sans", sans-serif;
+  font-weight: 300;
+}
+
+.font-calluna-sans-regular {
+  font-family: "Calluna Sans", sans-serif;
+  font-weight: 400;
+}
+
+.font-calluna-sans-semibold {
+  font-family: "Calluna Sans", sans-serif;
+  font-weight: 600;
+}
+
+.font-calluna-sans-bold {
+  font-family: "Calluna Sans", sans-serif;
+  font-weight: 700;
+}
+
+.font-calluna-sans-black {
+  font-family: "Calluna Sans", sans-serif;
+  font-weight: 900;
+}
+
+.font-calluna-sans-italic {
+  font-family: "Calluna Sans", sans-serif;
+  font-style: italic;
+}
+
+.font-calluna-sans-light-italic {
+  font-family: "Calluna Sans", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.font-calluna-sans-semibold-italic {
+  font-family: "Calluna Sans", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.font-calluna-sans-bold-italic {
+  font-family: "Calluna Sans", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.font-calluna-sans-black-italic {
+  font-family: "Calluna Sans", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+/* Cezanne Class */
+.font-cezanne {
+  font-family: "Cezanne", cursive;
+}
