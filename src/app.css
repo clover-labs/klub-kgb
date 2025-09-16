@@ -42,12 +42,6 @@ body {
   background: var(--color-gray-400);
 }
 
-/* Selection styles */
-::selection {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-}
-
 /* Focus visible for better accessibility */
 :focus-visible {
   outline: 2px solid var(--color-primary);

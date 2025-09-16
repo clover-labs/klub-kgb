@@ -36,7 +36,7 @@ const hour = $derived(new Date(post.event_date).toLocaleTimeString('sl-SI', {
 		<!-- Title -->
 		 {#if !isHovered}
 			<h3 class="text-pitch-black-100 absolute top-[12px] left-[3%] flex items-center"  out:send={{key: 'cezanne-title'}} in:receive={{key: 'cezanne-title'}}>
-				<span class="text-3xl md:text-4xl font-calluna-sans-black">{dividedTitleByPluses[0].trim()}</span>
+				<span class="text-3xl md:text-4xl font-calluna-sans-black truncate max-w-5/6">{dividedTitleByPluses[0].trim()}</span>
 				{#if dividedTitleByPluses.length > 1}
 					<span class="text-2xl md:text-4xl ml-2 font-calluna-sans-black">+</span>
 					<div class="text-md md:text-lg ml-2 font-calluna-sans-bold leading-tight">
@@ -66,7 +66,7 @@ const hour = $derived(new Date(post.event_date).toLocaleTimeString('sl-SI', {
 		{#if isHovered}
 			<!-- Centered Cezanne Text -->
 			<div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8">
-				<h3 class="text-really-white-100 text-5xl font-calluna-sans-semibold leading-12" in:receive={{key: 'cezanne-title'}} out:send={{key: 'cezanne-title'}}>{dividedTitleByPluses[0].trim()}</h3>
+				<h3 class="text-really-white-100 text-5xl font-calluna-sans-semibold leading-12 text-center" in:receive={{key: 'cezanne-title'}} out:send={{key: 'cezanne-title'}}>{dividedTitleByPluses[0].trim()}</h3>
 				<span class="text-prototype-orange-500 text-6xl font-calluna-sans-semibold leading-12" in:receive={{key: 'cezanne-date'}} out:send={{key: 'cezanne-date'}}>{dayAndMonth.replace(' ', '.')}</span>
 				<span class="text-prototype-orange-500 text-6xl font-calluna-sans-semibold leading-12" in:receive={{key: 'cezanne-hour'}} out:send={{key: 'cezanne-hour'}}>{hour}</span>
 			</div>

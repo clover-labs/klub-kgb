@@ -5,14 +5,6 @@
 
 	export let data: PageData;
 	const { blogPosts } = data;
-	
-	const mockBlogPosts = [
-		...blogPosts,
-		...blogPosts,
-		...blogPosts,
-		...blogPosts,	
-		...blogPosts,
-	]
 </script>
 
 <svelte:head>
@@ -53,7 +45,7 @@
 	  <section id="dogodki" class="w-full px-4 md:px-12 flex flex-col gap-8">
 		<h2 class="text-pitch-black-100 text-3xl md:text-4xl font-calluna-sans-semibold">Dogodki</h2>
 		<div class="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-			{#each mockBlogPosts as post}
+			{#each blogPosts as post}
 				<BlogCard {post} />
 			{/each}
 		</div>
