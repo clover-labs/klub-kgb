@@ -26,7 +26,7 @@ const hour = $derived(new Date(post.event_date).toLocaleTimeString('sl-SI', {
 
 <a href={post.link} class="cursor-pointer" target="_blank">
 	<article class="bg-off-white-100 p-16 w-full h-full relative group" onmouseenter={() => isHovered = true} onmouseleave={() => isHovered = false}>
-		<div tabindex="0" role="link" class="absolute inset-0 bg-transparent group-hover:bg-pitch-black-100/70 transition-all duration-300"></div>
+		<div tabindex="0" role="link" class="absolute inset-0 bg-transparent group-hover:bg-pitch-black-100/60 transition-all duration-300"></div>
 		<img 
 			src={`https://cms.cloverlabs.dev/assets/${post.image}?${post.date_updated || Date.now()}`} 
 			alt={post.title} 
@@ -65,10 +65,10 @@ const hour = $derived(new Date(post.event_date).toLocaleTimeString('sl-SI', {
 	
 		{#if isHovered}
 			<!-- Centered Cezanne Text -->
-			<div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8">
-				<h3 class="text-really-white-100 text-5xl font-calluna-sans-semibold leading-12 text-center" in:receive={{key: 'cezanne-title'}} out:send={{key: 'cezanne-title'}}>{dividedTitleByPluses[0].trim()}</h3>
-				<span class="text-prototype-orange-500 text-6xl font-calluna-sans-semibold leading-12" in:receive={{key: 'cezanne-date'}} out:send={{key: 'cezanne-date'}}>{dayAndMonth.replace(' ', '.')}</span>
-				<span class="text-prototype-orange-500 text-6xl font-calluna-sans-semibold leading-12" in:receive={{key: 'cezanne-hour'}} out:send={{key: 'cezanne-hour'}}>{hour}</span>
+			<div class="absolute inset-0 z-10 flex flex-col items-center justify-center">
+				<h3 class="text-off-white-100 text-3xl font-calluna-sans-semibold leading-12 text-center" in:receive={{key: 'cezanne-title'}} out:send={{key: 'cezanne-title'}}>{dividedTitleByPluses[0].trim()}</h3>
+				<span class="text-prototype-orange-500 text-4xl font-calluna-sans-semibold leading-12" in:receive={{key: 'cezanne-date'}} out:send={{key: 'cezanne-date'}}>{dayAndMonth.replace(' ', '.')}</span>
+				<span class="text-prototype-orange-500 text-4xl font-calluna-sans-semibold leading-12" in:receive={{key: 'cezanne-hour'}} out:send={{key: 'cezanne-hour'}}>{hour}</span>
 			</div>
 		{/if}
 	

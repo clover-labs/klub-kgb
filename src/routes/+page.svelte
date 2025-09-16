@@ -54,15 +54,15 @@
 
 		<!-- Hero content -->
 		<div
-			class="w-full flex flex-col items-start justify-center h-full px-4 md:px-12 py-2 gap-4"
+			class="w-full flex flex-col items-center lg:items-start justify-center h-full px-4 md:px-12 py-2 gap-4"
 		>
 			<h1
-				class="w-full text-pitch-black-100 text-3xl md:text-5xl font-bold font-calluna-sans-bold text-center md:text-left"
+				class="w-full text-pitch-black-100 text-3xl lg:text-5xl font-bold font-calluna-sans-bold text-center lg:text-left"
 			>
 				Dobrodošli v Klub KGB
 			</h1>
 			<p
-				class="w-full text-pitch-black-100 text-lg md:text-2xl font-calluna-sans-light text-center md:text-left"
+				class="w-full sm:max-w-1/2 text-pitch-black-100 text-lg lg:text-2xl font-calluna-sans-light text-center lg:text-left"
 			>
 				Prostor, ki gosti dobre ljudi in dogodke že od leta 1998 dalje. Glasba,
 				predstave in ostali dogodki, v srcu Maribora.
@@ -70,7 +70,7 @@
 			<a
 				href="https://olaii.com/organizer/866/klub-kgb"
 				target="_blank"
-				class="w-full md:w-fit text-prototype-orange-500 text-xl md:text-2xl font-calluna-sans-semibold group flex items-center justify-center md:justify-start"
+				class="w-full md:w-fit text-prototype-orange-500 text-xl lg:text-2xl font-calluna-sans-semibold group flex items-center justify-center md:justify-start"
 			>
 				Na nakup kart <span
 					class="ml-2 group-hover:translate-x-2 transition-transform duration-300"
