@@ -1,3 +1,2 @@
-import { i18n } from "$lib/i18n";
-
-export const handle = i18n.handle();
+// Paraglide handles i18n automatically via vite plugin
+// No client hooks needed for basic route translation
