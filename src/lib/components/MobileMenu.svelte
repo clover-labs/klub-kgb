@@ -2,7 +2,9 @@
 	import type { MenuItem } from "$lib/config/menu";
 	import { fade, fly, slide } from "svelte/transition";
 	import { quintOut } from "svelte/easing";
-	import { menuConfig, hasSubmenu, isSection } from "$lib/config/menu";
+	import { getMenuConfig, hasSubmenu, isSection } from "$lib/config/menu";
+
+	const menuConfig = getMenuConfig();
 
 	export let isOpen: boolean = false;
 	export let onClose: () => void = () => {};

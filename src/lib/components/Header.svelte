@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { menuConfig, hasSubmenu } from "$lib/config/menu";
+	import { getMenuConfig, hasSubmenu } from "$lib/config/menu";
 	import type { MenuItem } from "$lib/config/menu";
 	import MegaMenu from "./MegaMenu.svelte";
 	import MobileMenu from "./MobileMenu.svelte";
-	import LanguageSwitcher from "./LanguageSwitcher.svelte";
+
+	const menuConfig = getMenuConfig();
 
 	let openSubmenu: string | null = null;
 	let mobileMenuOpen: boolean = false;
@@ -82,14 +83,10 @@
 					</a>
 				{/if}
 			{/each}
-
-			<!-- Language Switcher -->
-			<LanguageSwitcher />
 		</nav>
 
-		<!-- Mobile: Language Switcher + Hamburger -->
+		<!-- Mobile: Hamburger -->
 		<div class="flex items-center gap-2 md:hidden">
-			<LanguageSwitcher />
 			<!-- Mobile Hamburger Button -->
 			<button
 				on:click={toggleMobileMenu}
