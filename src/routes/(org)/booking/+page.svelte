@@ -196,7 +196,7 @@
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
 							</svg>
 							<span class="font-calluna-sans-light text-gray-700">
-								Vojaaniaki trg 5, 2000 Maribor
+								Vojašniški trg 5, 2000 Maribor
 							</span>
 						</div>
 					</div>

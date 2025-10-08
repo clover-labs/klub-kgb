@@ -84,12 +84,12 @@
 					Lokacija
 				</h2>
 				<p class="mt-4 font-calluna-sans-light text-gray-700 leading-relaxed">
-					Nahajamo se v samem središču Maribora, na Ulici kneza Koclja 9.
+					Nahajamo se v samem središču Maribora, na Vojašniškem trgu 5.
 					Prostor je lahko dostopen z javnim prevozom in v neposredni bližini parkirišč.
 				</p>
 				<div class="mt-4 rounded-lg bg-gray-100 p-6">
 					<p class="font-calluna-sans-semibold text-pitch-black-100">Klub KGB</p>
-					<p class="mt-1 font-calluna-sans-light text-gray-700">Ulica kneza Koclja 9</p>
+					<p class="mt-1 font-calluna-sans-light text-gray-700">Vojašniški trg 5</p>
 					<p class="font-calluna-sans-light text-gray-700">2000 Maribor, Slovenija</p>
 				</div>
 			</div>
