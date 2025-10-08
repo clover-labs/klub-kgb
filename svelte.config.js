@@ -1,5 +1,6 @@
 import adapter from "@sveltejs/adapter-cloudflare";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import { paraglide } from "@inlang/paraglide-sveltekit/vite";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -13,6 +14,15 @@ const config = {
     alias: {
       $lib: "./src/lib",
     },
+  },
+
+  vite: {
+    plugins: [
+      paraglide({
+        project: "./project.inlang",
+        outdir: "./src/lib/paraglide",
+      }),
+    ],
   },
 };
 
