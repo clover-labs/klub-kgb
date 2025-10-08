@@ -41,7 +41,7 @@
 		</a>
 
 		<!-- Desktop Navigation -->
-		<nav class="hidden flex-1 items-center gap-4 md:flex" aria-label="Main navigation">
+		<nav class="hidden flex-1 items-center justify-end gap-4 md:flex" aria-label="Main navigation">
 			{#each menuConfig as item}
 				{#if hasSubmenu(item)}
 					<!-- Menu item with submenu -->
@@ -83,10 +83,8 @@
 				{/if}
 			{/each}
 
-			<!-- Language Switcher - Far Right -->
-			<div class="ml-auto">
-				<LanguageSwitcher />
-			</div>
+			<!-- Language Switcher -->
+			<LanguageSwitcher />
 		</nav>
 
 		<!-- Mobile: Language Switcher + Hamburger -->
