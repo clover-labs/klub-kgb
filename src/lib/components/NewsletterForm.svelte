@@ -2,6 +2,7 @@
   import Input from '$lib/components/ui/input/input.svelte';
   import Button from './ui/button/button.svelte';
 	import NewsletterSuccessModal from './NewsletterSuccessModal.svelte';
+	import * as m from '$lib/paraglide/messages';
 
 	let email = $state('');
 	let isSubmitting = $state(false);
@@ -13,7 +14,7 @@
 		e.preventDefault();
 
 		if (!email || !isValidEmail(email)) {
-			message = 'Prosimo, vnesite veljaven e-poštni naslov';
+			message = m.newsletter_invalid_email();
 			messageType = 'error';
 			return;
 		}
@@ -38,12 +39,12 @@
 				message = '';
 				messageType = '';
 			} else {
-				message = data.error || 'Prišlo je do napake. Prosimo, poskusite ponovno.';
+				message = data.error || m.newsletter_error();
 				messageType = 'error';
 			}
 		} catch (error) {
 			console.error('Newsletter subscription error:', error);
-			message = 'Prišlo je do napake. Prosimo, poskusite ponovno.';
+			message = m.newsletter_error();
 			messageType = 'error';
 		} finally {
 			isSubmitting = false;
@@ -63,12 +64,12 @@
 				type="email"
 				class="w-full md:max-w-[20rem]"
 				bind:value={email}
-				placeholder="Vnesi svoj email naslov"
+				placeholder={m.newsletter_email_placeholder()}
 				required
 				disabled={isSubmitting}
 			/>
 			<Button type="submit" disabled={isSubmitting || !email} variant="mean-green" class="uppercase w-full md:w-fit">
-				Naroči se
+				{m.newsletter_subscribe_button()}
 			</Button>
 		</div>
 	</form>

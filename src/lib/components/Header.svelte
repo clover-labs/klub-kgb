@@ -1,9 +1,13 @@
 <script lang="ts">
-	import { menuConfig, hasSubmenu } from "$lib/config/menu";
+	import { getMenuConfig, hasSubmenu } from "$lib/config/menu";
 	import type { MenuItem } from "$lib/config/menu";
 	import MegaMenu from "./MegaMenu.svelte";
 	import MobileMenu from "./MobileMenu.svelte";
 	import LanguageSwitcher from "./LanguageSwitcher.svelte";
+	import { languageTag } from "$lib/paraglide/runtime";
+
+	// Make menuConfig reactive to language changes
+	$: menuConfig = getMenuConfig();
 
 	let openSubmenu: string | null = null;
 	let mobileMenuOpen: boolean = false;

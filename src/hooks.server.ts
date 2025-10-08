@@ -1,5 +1,4 @@
 import type { Handle } from "@sveltejs/kit";
-import { sequence } from "@sveltejs/kit/hooks";
+import { i18n } from "$lib/i18n";
 
-// Paraglide handles i18n automatically via vite plugin
-export const handle: Handle = sequence();
+export const handle: Handle = i18n.handle();

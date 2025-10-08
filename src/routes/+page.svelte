@@ -2,21 +2,22 @@
 	import type { PageData } from "./$types";
 	import BlogCard from "$lib/components/BlogCard.svelte";
 	import NewsletterForm from "$lib/components/NewsletterForm.svelte";
+	import * as m from "$lib/paraglide/messages";
 
 	export let data: PageData;
 	const { blogPosts } = data;
 </script>
 
 <svelte:head>
-	<title>Klub KGB Maribor</title>
+	<title>{m.home_title()}</title>
 	<meta
 		name="description"
-		content="Klub KGB Maribor - dogodki, glasba: v središču Maribora."
+		content={m.home_meta_description()}
 	/>
-	<meta property="og:title" content="Klub KGB Maribor" />
+	<meta property="og:title" content={m.home_title()} />
 	<meta
 		property="og:description"
-		content="Klub KGB Maribor - dogodki, glasba: v središču Maribora."
+		content={m.home_meta_description()}
 	/>
 	<meta property="og:image" content="/hero-image.svg" />
 </svelte:head>
@@ -33,20 +34,19 @@
 			<h1
 				class="w-full text-pitch-black-100 text-3xl lg:text-5xl font-bold font-calluna-sans-bold text-center lg:text-left"
 			>
-				Dobrodošli v Klub KGB
+				{m.home_hero_title()}
 			</h1>
 			<p
 				class="w-full sm:max-w-1/2 text-pitch-black-100 text-lg lg:text-2xl font-calluna-sans-light text-center lg:text-left"
 			>
-				Prostor, ki gosti dobre ljudi in dogodke že od leta 1998 dalje. Glasba,
-				predstave in ostali dogodki, v srcu Maribora.
+				{m.home_hero_subtitle()}
 			</p>
 			<a
 				href="https://olaii.com/organizer/866/klub-kgb"
 				target="_blank"
 				class="w-full md:w-fit text-prototype-orange-500 text-xl lg:text-2xl font-calluna-sans-semibold group flex items-center justify-center md:justify-start"
 			>
-				Na nakup kart <span
+				{m.home_tickets_cta()} <span
 					class="ml-2 group-hover:translate-x-2 transition-transform duration-300"
 					>→</span
 				>
@@ -59,7 +59,7 @@
 		<h2
 			class="text-pitch-black-100 text-3xl md:text-4xl font-calluna-sans-semibold"
 		>
-			Dogodki
+			{m.home_events_title()}
 		</h2>
 		<div class="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
 			{#each blogPosts as post}
@@ -70,20 +70,19 @@
 
 	<section id="newsletter" class="w-full px-4 md:px-12 flex flex-col gap-4">
 		<h2 class="text-pitch-black-100 text-4xl font-calluna-sans-semibold">
-			Newsletter
+			{m.home_newsletter_title()}
 		</h2>
 		<p
 			class="text-pitch-black-100 text-sm md:text-lg font-calluna-sans-light mb-4"
 		>
-			Prijavi se na naš newsletter in bodite obveščeni o naših dogodkih in
-			novicah.
+			{m.home_newsletter_subtitle()}
 		</p>
 		<NewsletterForm />
 		<a
 			href="/news"
 			class="text-prototype-orange-500 text-lg font-calluna-sans-semibold group flex items-center"
 		>
-			Preberi najnovejše novice <span
+			{m.home_latest_news_cta()} <span
 				class="ml-2 group-hover:translate-x-2 transition-transform duration-300"
 				>→</span
 			>

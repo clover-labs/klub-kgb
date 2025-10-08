@@ -1,13 +1,14 @@
 <script lang="ts">
 	import RandomQuote from '$lib/components/RandomQuote.svelte';
+	import * as m from '$lib/paraglide/messages';
 
-	// Most visited pages
-	const topPages = [
-		{ label: "Dogodki", href: "/events/upcoming" },
-		{ label: "Karte", href: "https://olaii.com/organizer/866/klub-kgb", external: true },
-		{ label: "O nas", href: "/about" },
-		{ label: "Kontakt", href: "/contact" },
-		{ label: "FAQ", href: "/faq" }
+	// Most visited pages - reactive to language changes
+	$: topPages = [
+		{ label: m.nav_events(), href: "/events/upcoming" },
+		{ label: m.nav_tickets(), href: "https://olaii.com/organizer/866/klub-kgb", external: true },
+		{ label: m.nav_about(), href: "/about" },
+		{ label: m.nav_contact(), href: "/contact" },
+		{ label: m.nav_faq(), href: "/faq" }
 	];
 </script>
 
@@ -15,7 +16,7 @@
 	<div class="mx-auto max-w-7xl">
 		<!-- Top Level: Most Visited Pages -->
 		<div class="mb-8 border-b border-gray-200 pb-8">
-			<h3 class="mb-4 font-calluna-sans-bold text-pitch-black-100">Hitri dostop</h3>
+			<h3 class="mb-4 font-calluna-sans-bold text-pitch-black-100">{m.footer_quick_access()}</h3>
 			<nav class="flex flex-wrap gap-4">
 				{#each topPages as page}
 					<a
@@ -34,7 +35,7 @@
 		<div class="mb-8 grid gap-8 md:grid-cols-2">
 			<!-- Social Media -->
 			<div>
-				<h3 class="mb-4 font-calluna-sans-bold text-pitch-black-100">Sledite nam</h3>
+				<h3 class="mb-4 font-calluna-sans-bold text-pitch-black-100">{m.footer_follow_us()}</h3>
 				<div class="flex items-center gap-4">
 		<a
 			aria-label="Facebook"
@@ -112,7 +113,7 @@
 
 			<!-- Funny Quote -->
 			<div>
-				<h3 class="mb-4 font-calluna-sans-bold text-pitch-black-100">Misel dneva</h3>
+				<h3 class="mb-4 font-calluna-sans-bold text-pitch-black-100">{m.footer_thought_of_day()}</h3>
 				<RandomQuote className="text-lg" />
 			</div>
 		</div>
@@ -120,9 +121,9 @@
 		<!-- Bottom Level: Copyright & "se vidimo!" -->
 		<div class="flex flex-col-reverse items-center justify-between gap-4 border-t border-gray-200 pt-8 md:flex-row">
 			<p class="text-sm font-calluna-sans-light text-pitch-black-100">
-				© 2025 Klub KGB. Vse pravice pridržane.
+				{m.footer_copyright()}
 			</p>
-			<span class="text-4xl font-cezanne text-pitch-black-100">se vidimo!</span>
+			<span class="text-4xl font-cezanne text-pitch-black-100">{m.footer_see_you()}</span>
 		</div>
 	</div>
 </footer>

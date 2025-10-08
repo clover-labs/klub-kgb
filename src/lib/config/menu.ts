@@ -1,3 +1,5 @@
+import * as m from '$lib/paraglide/messages';
+
 export interface MenuItem {
 	label: string;
 	href?: string;
@@ -13,66 +15,68 @@ export interface MenuSection {
 	items: MenuItem[];
 }
 
-export const menuConfig: MenuItem[] = [
-	{
-		label: "Karte",
-		href: "https://olaii.com/organizer/866/klub-kgb",
-		external: true,
-	},
-	{
-		label: "Klub",
-		children: [
-			{
-				label: "Dogodki",
-				section: true,
-				children: [
-					{
-						label: "Prihajajoči dogodki",
-						href: "/events/upcoming",
-						description: "Oglejte si naše aktualne in prihajajoče dogodke",
-					},
-					{
-						label: "Arhiv dogodkov",
-						href: "/events/archive",
-						description: "Arhiv preteklih dogodkov in nastopov",
-					},
-				],
-			},
-			{
-				label: "Vsebina",
-				section: true,
-				children: [
-					{
-						label: "Novice",
-						href: "/news",
-						description: "Najnovejše novice in objave iz kluba",
-					},
-					{
-						label: "Izvajalci",
-						href: "/artists",
-						description: "Spoznajte izvajalce, ki nastopajo pri nas",
-					},
-				],
-			},
-			{
-				label: "O klubu",
-				section: true,
-				children: [
-					{
-						label: "O nas",
-						href: "/about",
-						description: "Spoznajte Klub KGB in našo zgodbo",
-					},
-					{
-						label: "Kontakt",
-						href: "/contact",
-						description: "Stopite v stik z nami",
-					},
-				],
-			},
-		],
-	},
-];
+export function getMenuConfig(): MenuItem[] {
+	return [
+		{
+			label: m.nav_tickets(),
+			href: "https://olaii.com/organizer/866/klub-kgb",
+			external: true,
+		},
+		{
+			label: m.nav_club(),
+			children: [
+				{
+					label: m.nav_events(),
+					section: true,
+					children: [
+						{
+							label: m.nav_upcoming_events(),
+							href: "/events/upcoming",
+							description: m.events_upcoming_desc(),
+						},
+						{
+							label: m.nav_events_archive(),
+							href: "/events/archive",
+							description: m.events_archive_desc(),
+						},
+					],
+				},
+				{
+					label: m.nav_content(),
+					section: true,
+					children: [
+						{
+							label: m.nav_news(),
+							href: "/news",
+							description: "Najnovejše novice in objave iz kluba",
+						},
+						{
+							label: m.nav_artists(),
+							href: "/artists",
+							description: "Spoznajte izvajalce, ki nastopajo pri nas",
+						},
+					],
+				},
+				{
+					label: m.nav_about_club(),
+					section: true,
+					children: [
+						{
+							label: m.nav_about(),
+							href: "/about",
+							description: "Spoznajte Klub KGB in našo zgodbo",
+						},
+						{
+							label: m.nav_contact(),
+							href: "/contact",
+							description: "Stopite v stik z nami",
+						},
+					],
+				},
+			],
+		},
+	];
+}
 
 // Helper function to check if a menu item has children
 export function hasSubmenu(item: MenuItem): boolean {
