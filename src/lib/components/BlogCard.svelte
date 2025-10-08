@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { BlogPost } from '$lib/types.js';
 import { crossfade, fade } from 'svelte/transition';
+import { generateEventUrl } from '$lib/utils/slug';
 
 let { post }: { post: BlogPost } = $props();
 
@@ -24,7 +25,7 @@ const hour = $derived(new Date(post.event_date).toLocaleTimeString('sl-SI', {
 	
 </script>
 
-<a href={post.link} class="cursor-pointer" target="_blank">
+<a href={generateEventUrl(post)} class="cursor-pointer">
 	<article class="bg-off-white-100 p-16 w-full h-full relative group" onmouseenter={() => isHovered = true} onmouseleave={() => isHovered = false}>
 		<div tabindex="0" role="link" class="absolute inset-0 bg-transparent group-hover:bg-pitch-black-100/60 transition-all duration-300"></div>
 		<img 

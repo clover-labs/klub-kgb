@@ -1,18 +1,19 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
   import Input from '$lib/components/ui/input/input.svelte';
   import Button from './ui/button/button.svelte';
-	
-	const dispatch = createEventDispatcher();
-	
-	let email = '';
-	let isSubmitting = false;
-	let message = '';
-	let messageType: 'success' | 'error' | '' = '';
+	import NewsletterSuccessModal from './NewsletterSuccessModal.svelte';
 
-	async function handleSubmit() {
+	let email = $state('');
+	let isSubmitting = $state(false);
+	let message = $state('');
+	let messageType: 'success' | 'error' | '' = $state('');
+	let showSuccessModal = $state(false);
+
+	async function handleSubmit(e: Event) {
+		e.preventDefault();
+
 		if (!email || !isValidEmail(email)) {
-			message = 'Please enter a valid email address';
+			message = 'Prosimo, vnesite veljaven e-poštni naslov';
 			messageType = 'error';
 			return;
 		}
@@ -32,17 +33,17 @@
 			const data = await response.json();
 
 			if (response.ok) {
-				message = 'Thank you for subscribing!';
-				messageType = 'success';
+				showSuccessModal = true;
 				email = '';
-				dispatch('subscribe', { email });
+				message = '';
+				messageType = '';
 			} else {
-				message = data.error || 'Something went wrong. Please try again.';
+				message = data.error || 'Prišlo je do napake. Prosimo, poskusite ponovno.';
 				messageType = 'error';
 			}
 		} catch (error) {
 			console.error('Newsletter subscription error:', error);
-			message = 'Something went wrong. Please try again.';
+			message = 'Prišlo je do napake. Prosimo, poskusite ponovno.';
 			messageType = 'error';
 		} finally {
 			isSubmitting = false;
@@ -56,7 +57,7 @@
 </script>
 
 <div>
-	<form on:submit|preventDefault={handleSubmit}>
+	<form onsubmit={handleSubmit}>
 		<div class="flex items-center gap-2 flex-col md:flex-row">
 			<Input
 				type="email"
@@ -71,11 +72,17 @@
 			</Button>
 		</div>
 	</form>
-	
+
 	{#if message}
 		<div class="message {messageType}">
 			{message}
 		</div>
 	{/if}
 </div>
+
+<!-- Success Modal -->
+<NewsletterSuccessModal
+	isOpen={showSuccessModal}
+	onClose={() => showSuccessModal = false}
+/>
 

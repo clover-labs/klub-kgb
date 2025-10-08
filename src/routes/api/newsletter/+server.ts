@@ -1,8 +1,8 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { env } from '$lib/env';
+import { subscribeToNewsletter } from '$lib/beehiiv';
 
-export const POST: RequestHandler = async ({ request, getClientAddress }) => {
+export const POST: RequestHandler = async ({ request, url }) => {
 	try {
 		const { email } = await request.json();
 
@@ -16,35 +16,36 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 			return json({ error: 'Invalid email format' }, { status: 400 });
 		}
 
-		// Get client IP address
-		const ipAddress = getClientAddress();
+		// Get UTM parameters from request URL
+		const utmSource = url.searchParams.get('utm_source') || 'website';
+		const utmMedium = url.searchParams.get('utm_medium') || 'newsletter-form';
+		const utmCampaign = url.searchParams.get('utm_campaign') || undefined;
+		const referringSite = url.searchParams.get('ref') || undefined;
 
-		// Prepare the payload for the webhook
-		const currentTime = new Date().toISOString();
-		const payload = {
-			name: 'empty',
-			email: email,
-			consent:{given: true,marketing: true,timestamp: currentTime},
-			submittedAt: currentTime,
-			source: env.PUBLIC_APP_NAME,
-			ipAddress: ipAddress
-		};
-
-		// Send POST request to the webhook
-		const webhookResponse = await fetch('https://n8n.blendorsefaj.com/webhook/cc8c81f7-2878-49c5-be30-f3948f856703', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(payload)
+		// Subscribe to Beehiiv
+		const result = await subscribeToNewsletter({
+			email,
+			reactivate_existing: false,
+			send_welcome_email: true,
+			utm_source: utmSource,
+			utm_medium: utmMedium,
+			utm_campaign: utmCampaign,
+			referring_site: referringSite
 		});
 
-		if (!webhookResponse.ok) {
-			console.error('Webhook request failed:', webhookResponse.status, webhookResponse.statusText);
-			return json({ error: 'Failed to subscribe to newsletter' }, { status: 500 });
+		if (result.errors && result.errors.length > 0) {
+			console.error('Beehiiv subscription error:', result.errors);
+			return json(
+				{ error: result.errors[0].message || 'Failed to subscribe to newsletter' },
+				{ status: 400 }
+			);
 		}
 
-		return json({ success: true, message: 'Successfully subscribed to newsletter' });
+		return json({
+			success: true,
+			message: 'Successfully subscribed to newsletter',
+			data: result.data
+		});
 
 	} catch (error) {
 		console.error('Newsletter subscription error:', error);

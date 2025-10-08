@@ -7,4 +7,5 @@ export const env = {
   PUBLIC_DIRECTUS_COLLECTION_NAME:
     publicEnv.PUBLIC_LANDING_DIRECTUS_COLLECTION_NAME || "kgb-posts",
   PUBLIC_APP_NAME: publicEnv.PUBLIC_APP_NAME || "klub-kgb",
+  PUBLIC_BASE_URL: publicEnv.PUBLIC_BASE_URL || "https://klub-kgb.si",
 } as const;
