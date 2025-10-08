@@ -3,6 +3,8 @@
 	import Header from "$lib/components/Header.svelte";
 	import Footer from "$lib/components/Footer.svelte";
 	import ScrollToTop from "$lib/components/ScrollToTop.svelte";
+	import { ParaglideJS } from "@inlang/paraglide-sveltekit";
+	import { i18n } from "$lib/i18n";
 	import "../app.css";
 </script>
 
@@ -18,11 +20,13 @@
 	/>
 </svelte:head>
 
-<Header />
+<ParaglideJS {i18n}>
+	<Header />
 
-<slot />
+	<slot />
 
-<Footer />
+	<Footer />
 
-<ScrollToTop />
+	<ScrollToTop />
+</ParaglideJS>
 

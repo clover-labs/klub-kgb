@@ -3,8 +3,10 @@
 	import { fade, fly, slide } from "svelte/transition";
 	import { quintOut } from "svelte/easing";
 	import { getMenuConfig, hasSubmenu, isSection } from "$lib/config/menu";
+	import { languageTag } from "$lib/paraglide/runtime";
 
-	const menuConfig = getMenuConfig();
+	// Make menuConfig reactive to language changes
+	$: menuConfig = getMenuConfig();
 
 	export let isOpen: boolean = false;
 	export let onClose: () => void = () => {};

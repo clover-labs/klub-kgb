@@ -3,8 +3,11 @@
 	import type { MenuItem } from "$lib/config/menu";
 	import MegaMenu from "./MegaMenu.svelte";
 	import MobileMenu from "./MobileMenu.svelte";
+	import LanguageSwitcher from "./LanguageSwitcher.svelte";
+	import { languageTag } from "$lib/paraglide/runtime";
 
-	const menuConfig = getMenuConfig();
+	// Make menuConfig reactive to language changes
+	$: menuConfig = getMenuConfig();
 
 	let openSubmenu: string | null = null;
 	let mobileMenuOpen: boolean = false;
@@ -83,10 +86,14 @@
 					</a>
 				{/if}
 			{/each}
+
+			<!-- Language Switcher -->
+			<LanguageSwitcher />
 		</nav>
 
-		<!-- Mobile: Hamburger -->
+		<!-- Mobile: Language Switcher + Hamburger -->
 		<div class="flex items-center gap-2 md:hidden">
+			<LanguageSwitcher />
 			<!-- Mobile Hamburger Button -->
 			<button
 				on:click={toggleMobileMenu}
