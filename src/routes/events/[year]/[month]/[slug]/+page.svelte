@@ -312,7 +312,36 @@
 							Rezerviraj mizo
 						</button>
 					{/if}
-					{#if event.link}
+
+					<!-- Ticket Button based on status -->
+					{#if event.ticket_status === 'coming_soon'}
+						<button
+							disabled
+							class="inline-flex items-center gap-2 rounded-lg bg-gray-400 px-6 py-3 font-calluna-sans-semibold text-white cursor-not-allowed opacity-75"
+						>
+							<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+							</svg>
+							Karte kmalu na voljo
+						</button>
+					{:else if event.ticket_status === 'sold_out'}
+						<button
+							disabled
+							class="inline-flex items-center gap-2 rounded-lg bg-gray-600 px-6 py-3 font-calluna-sans-semibold text-white cursor-not-allowed"
+						>
+							<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+							</svg>
+							Razprodano
+						</button>
+					{:else if event.ticket_status === 'free_entry'}
+						<div class="inline-flex items-center gap-2 rounded-lg bg-mean-green-500 px-6 py-3 font-calluna-sans-semibold text-pitch-black-100">
+							<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+							</svg>
+							Vstop prost
+						</div>
+					{:else if event.link}
 						<a
 							href={event.link}
 							target="_blank"
@@ -558,7 +587,27 @@
 				Rezerviraj mizo
 			</button>
 		{/if}
-		{#if event.link}
+
+		<!-- Ticket Button based on status -->
+		{#if event.ticket_status === 'coming_soon'}
+			<button
+				disabled
+				class="flex-1 rounded-lg bg-gray-400 px-4 py-3 text-center font-calluna-sans-semibold text-white cursor-not-allowed opacity-75"
+			>
+				Karte kmalu na voljo
+			</button>
+		{:else if event.ticket_status === 'sold_out'}
+			<button
+				disabled
+				class="flex-1 rounded-lg bg-gray-600 px-4 py-3 text-center font-calluna-sans-semibold text-white cursor-not-allowed"
+			>
+				Razprodano
+			</button>
+		{:else if event.ticket_status === 'free_entry'}
+			<div class="flex-1 rounded-lg bg-mean-green-500 px-4 py-3 text-center font-calluna-sans-semibold text-pitch-black-100">
+				Vstop prost
+			</div>
+		{:else if event.link}
 			<a
 				href={event.link}
 				target="_blank"

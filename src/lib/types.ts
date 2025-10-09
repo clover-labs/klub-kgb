@@ -17,6 +17,7 @@ export interface BlogPost {
   slug?: string; // Optional: URL-friendly slug from Directus, or generated from title
   artist_description?: string; // About the artist/performer
   performers?: Performer[]; // List of performers/members
+  ticket_status?: 'available' | 'coming_soon' | 'sold_out' | 'free_entry'; // Ticket availability status
 }
 
 export interface NewsletterForm {
