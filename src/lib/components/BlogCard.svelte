@@ -26,12 +26,12 @@ const hour = $derived(new Date(post.event_date).toLocaleTimeString('sl-SI', {
 </script>
 
 <a href={generateEventUrl(post)} class="cursor-pointer">
-	<article class="bg-off-white-100 p-16 w-full h-full relative group" onmouseenter={() => isHovered = true} onmouseleave={() => isHovered = false}>
+	<article class="bg-pitch-black-100 p-16 w-full h-full relative group" onmouseenter={() => isHovered = true} onmouseleave={() => isHovered = false}>
 		<div tabindex="0" role="link" class="absolute inset-0 bg-transparent group-hover:bg-pitch-black-100/60 transition-all duration-300"></div>
-		<img 
-			src={`https://cms.cloverlabs.dev/assets/${post.image}?${post.date_updated || Date.now()}`} 
-			alt={post.title} 
-			class="w-full h-full object-cover" 
+		<img
+			src={`https://cms.cloverlabs.dev/assets/${post.image}?${post.date_updated || Date.now()}`}
+			alt={post.title}
+			class="w-full h-full object-contain"
 		/>
 	
 		<!-- Title -->

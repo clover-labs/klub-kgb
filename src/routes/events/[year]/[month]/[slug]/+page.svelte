@@ -230,11 +230,11 @@
 		<article class="overflow-hidden rounded-lg bg-white shadow-lg">
 			<!-- Hero Image -->
 			{#if event.image}
-				<div class="relative h-96 w-full overflow-hidden rounded-t-lg bg-gray-200">
+				<div class="relative h-96 w-full overflow-hidden rounded-t-lg bg-pitch-black-100">
 					<img
 						src={getImageUrl(event.image)}
 						alt={event.title}
-						class="h-full w-full object-cover"
+						class="h-full w-full object-contain"
 						onerror={(e) => {
 							const target = e.target;
 							if (target && target instanceof HTMLImageElement) {
@@ -462,11 +462,11 @@
 						<article class="group overflow-hidden rounded-lg bg-white shadow-lg transition-all hover:shadow-xl">
 							<a href={generateEventUrl(relatedEvent)} class="block">
 								{#if relatedEvent.image}
-									<div class="relative h-48 overflow-hidden rounded-t-lg bg-gray-200">
+									<div class="relative h-48 overflow-hidden rounded-t-lg bg-pitch-black-100">
 										<img
 											src={getImageUrl(relatedEvent.image)}
 											alt={relatedEvent.title}
-											class="h-full w-full object-cover"
+											class="h-full w-full object-contain"
 											onerror={(e) => {
 												const target = e.target;
 												if (target && target instanceof HTMLImageElement) {
