@@ -189,5 +189,26 @@
 	"events_upcoming": "Upcoming events",
 	"events_archive": "Events archive",
 	"events_upcoming_desc": "Check out our current and upcoming events",
-	"events_archive_desc": "Archive of past events and performances"
+	"events_archive_desc": "Archive of past events and performances",
+
+	"_comment_events_upcoming": "=== Events Upcoming Page ===",
+	"events_upcoming_title": "Upcoming Events - Klub KGB Maribor",
+	"events_upcoming_meta_description": "Upcoming events at Klub KGB Maribor",
+	"events_upcoming_hero_title": "Upcoming Events",
+	"events_upcoming_hero_subtitle": "Discover our upcoming concerts, DJ nights and events",
+	"events_search_placeholder": "Search events...",
+	"events_filter_all": "All",
+	"events_filter_this_week": "This Week",
+	"events_filter_next_week": "Next Week",
+	"events_filter_future": "Future",
+	"events_count_single": "event",
+	"events_count_dual": "events",
+	"events_count_few": "events",
+	"events_count_many": "events",
+	"events_no_results_title": "No events found",
+	"events_no_results_search": "Try a different search or change the filter.",
+	"events_no_results_period": "No events are scheduled for this period.",
+	"events_reset_filters": "Reset filters",
+	"events_stay_informed": "Stay informed",
+	"events_newsletter_cta": "Subscribe to our newsletter and be the first to know about upcoming events."
 }

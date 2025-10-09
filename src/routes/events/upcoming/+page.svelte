@@ -2,6 +2,7 @@
 	import type { PageData } from "../../(events)/upcoming/$types";
 	import BlogCard from "$lib/components/BlogCard.svelte";
 	import NewsletterForm from "$lib/components/NewsletterForm.svelte";
+	import * as m from "$lib/paraglide/messages";
 
 	let { data }: { data: PageData } = $props();
 	const { upcomingEvents } = data;
@@ -90,8 +91,8 @@
 </script>
 
 <svelte:head>
-	<title>Prihajajoči dogodki - Klub KGB Maribor</title>
-	<meta name="description" content="Prihajajoči dogodki v Klubu KGB Maribor" />
+	<title>{m.events_upcoming_title()}</title>
+	<meta name="description" content={m.events_upcoming_meta_description()} />
 </svelte:head>
 
 <main class="flex flex-col gap-12">
@@ -101,12 +102,12 @@
 			<h1
 				class="text-4xl font-calluna-sans-bold text-pitch-black-100 md:text-5xl lg:text-6xl"
 			>
-				Prihajajoči dogodki
+				{m.events_upcoming_hero_title()}
 			</h1>
 			<p
 				class="mt-4 text-lg font-calluna-sans-light text-pitch-black-100 md:text-xl"
 			>
-				Odkrijte naše prihajajoče koncerte, DJ večere in dogodke
+				{m.events_upcoming_hero_subtitle()}
 			</p>
 		</div>
 	</section>
@@ -120,7 +121,7 @@
 					<input
 						type="text"
 						bind:value={searchQuery}
-						placeholder="Išči dogodke..."
+						placeholder={m.events_search_placeholder()}
 						class="w-full rounded-lg border border-gray-300 px-4 py-3 pl-12 font-calluna-sans-light focus:border-mean-green-500 focus:outline-none focus:ring-2 focus:ring-mean-green-500/20"
 					/>
 					<svg
@@ -148,7 +149,7 @@
 						? 'bg-mean-green-500 text-pitch-black-100'
 						: 'bg-gray-100 text-pitch-black-100 hover:bg-gray-200'}"
 				>
-					Vsi
+					{m.events_filter_all()}
 				</button>
 				<button
 					onclick={() => setFilter("thisWeek")}
@@ -157,7 +158,7 @@
 						? 'bg-mean-green-500 text-pitch-black-100'
 						: 'bg-gray-100 text-pitch-black-100 hover:bg-gray-200'}"
 				>
-					Ta teden
+					{m.events_filter_this_week()}
 				</button>
 				<button
 					onclick={() => setFilter("nextWeek")}
@@ -166,7 +167,7 @@
 						? 'bg-mean-green-500 text-pitch-black-100'
 						: 'bg-gray-100 text-pitch-black-100 hover:bg-gray-200'}"
 				>
-					Naslednji teden
+					{m.events_filter_next_week()}
 				</button>
 				<button
 					onclick={() => setFilter("future")}
@@ -175,7 +176,7 @@
 						? 'bg-mean-green-500 text-pitch-black-100'
 						: 'bg-gray-100 text-pitch-black-100 hover:bg-gray-200'}"
 				>
-					V prihodnosti
+					{m.events_filter_future()}
 				</button>
 			</div>
 
@@ -183,12 +184,12 @@
 			<div class="mt-4 text-sm font-calluna-sans-light text-gray-600">
 				{filteredEvents.length}
 				{filteredEvents.length === 1
-					? "dogodek"
+					? m.events_count_single()
 					: filteredEvents.length === 2
-						? "dogodka"
+						? m.events_count_dual()
 						: filteredEvents.length === 3 || filteredEvents.length === 4
-							? "dogodki"
-							: "dogodkov"}
+							? m.events_count_few()
+							: m.events_count_many()}
 			</div>
 		</div>
 	</section>
@@ -219,13 +220,13 @@
 						/>
 					</svg>
 					<h3 class="mb-2 text-xl font-calluna-sans-semibold text-gray-700">
-						Ni najdenih dogodkov
+						{m.events_no_results_title()}
 					</h3>
 					<p class="text-center font-calluna-sans-light text-gray-600">
 						{#if searchQuery.trim()}
-							Poskusite z drugim iskanjem ali spremените filter.
+							{m.events_no_results_search()}
 						{:else}
-							V tem obdobju ni načrtovanih dogodkov.
+							{m.events_no_results_period()}
 						{/if}
 					</p>
 					{#if searchQuery.trim() || activeFilter !== "all"}
@@ -236,7 +237,7 @@
 							}}
 							class="mt-4 rounded-lg bg-mean-green-500 px-6 py-2 font-calluna-sans-semibold text-pitch-black-100 transition-colors hover:bg-mean-green-400"
 						>
-							Ponastavi filtere
+							{m.events_reset_filters()}
 						</button>
 					{/if}
 				</div>
@@ -248,11 +249,10 @@
 	<section class="w-full bg-off-white-100 px-4 py-12 md:px-12">
 		<div class="mx-auto max-w-7xl">
 			<h2 class="text-3xl font-calluna-sans-semibold text-pitch-black-100">
-				Ostanite obveščeni
+				{m.events_stay_informed()}
 			</h2>
 			<p class="mt-2 font-calluna-sans-light text-gray-700">
-				Prijavite se na naš newsletter in bodite prvi obveščeni o prihajajočih
-				dogodkih.
+				{m.events_newsletter_cta()}
 			</p>
 			<div class="mt-6">
 				<NewsletterForm />

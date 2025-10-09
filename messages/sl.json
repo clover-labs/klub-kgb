@@ -189,5 +189,26 @@
 	"events_upcoming": "Prihajajoči dogodki",
 	"events_archive": "Arhiv dogodkov",
 	"events_upcoming_desc": "Oglejte si naše aktualne in prihajajoče dogodke",
-	"events_archive_desc": "Arhiv preteklih dogodkov in nastopov"
+	"events_archive_desc": "Arhiv preteklih dogodkov in nastopov",
+
+	"_comment_events_upcoming": "=== Events Upcoming Page ===",
+	"events_upcoming_title": "Prihajajoči dogodki - Klub KGB Maribor",
+	"events_upcoming_meta_description": "Prihajajoči dogodki v Klubu KGB Maribor",
+	"events_upcoming_hero_title": "Prihajajoči dogodki",
+	"events_upcoming_hero_subtitle": "Odkrijte naše prihajajoče koncerte, DJ večere in dogodke",
+	"events_search_placeholder": "Išči dogodke...",
+	"events_filter_all": "Vsi",
+	"events_filter_this_week": "Ta teden",
+	"events_filter_next_week": "Naslednji teden",
+	"events_filter_future": "V prihodnosti",
+	"events_count_single": "dogodek",
+	"events_count_dual": "dogodka",
+	"events_count_few": "dogodki",
+	"events_count_many": "dogodkov",
+	"events_no_results_title": "Ni najdenih dogodkov",
+	"events_no_results_search": "Poskusite z drugim iskanjem ali spremените filter.",
+	"events_no_results_period": "V tem obdobju ni načrtovanih dogodkov.",
+	"events_reset_filters": "Ponastavi filtere",
+	"events_stay_informed": "Ostanite obveščeni",
+	"events_newsletter_cta": "Prijavite se na naš newsletter in bodite prvi obveščeni o prihajajočih dogodkih."
 }
