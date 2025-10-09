@@ -9,6 +9,9 @@
 
 	let { data }: { data: PageData } = $props();
 
+	// Track navigation history
+	let previousPath = $state<string | null>(null);
+
 	// Make data reactive with $derived
 	const event = $derived(data.event);
 	const referrer = $derived(data.referrer);
@@ -18,6 +21,11 @@
 
 	// Invalidate data when navigating to a new event
 	beforeNavigate(({ to, from }) => {
+		// Store the current path as previous when navigating away
+		if (from?.url?.pathname) {
+			previousPath = from.url.pathname;
+		}
+
 		// Only invalidate if navigating between different event pages
 		if (to?.route?.id === from?.route?.id && to?.url?.pathname !== from?.url?.pathname) {
 			invalidateAll();
@@ -71,8 +79,16 @@
 	}
 
 	function goBack() {
-		// Always use browser's back navigation for correct history
-		window.history.back();
+		// If we have a stored previous path, use it
+		if (previousPath) {
+			goto(previousPath);
+		}
+		// Otherwise, try to determine where to go based on event type
+		else if (isEventPast) {
+			goto('/events/archive');
+		} else {
+			goto('/events/upcoming');
+		}
 	}
 
 	function shareEvent() {
