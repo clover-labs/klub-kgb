@@ -71,11 +71,8 @@
 	}
 
 	function goBack() {
-		if (referrer && referrer !== '/') {
-			goto(referrer);
-		} else {
-			window.history.back();
-		}
+		// Always use browser's back navigation for correct history
+		window.history.back();
 	}
 
 	function shareEvent() {
