@@ -34,7 +34,7 @@
 				</h2>
 				<p class="mt-4 font-calluna-sans-light text-gray-700 leading-relaxed">
 					Klub KGB je eden izmed najbolj prepoznavnih klubov v Mariboru, ki deluje že od leta 1998.
-					V središču mesta gostimo raznolike dogodke - od koncertov in DJ setov do predstav in kulturnih dogodkov.
+					V središču mesta gostimo raznolike dogodke - od koncertov in stand-up komedij do predstav in kulturnih dogodkov.
 					Naš prostor je postal dom za lokalno sceno in mednarodno priznan klub, ki vabi k druženju in odkrivanju nove glasbe.
 				</p>
 			</div>
@@ -54,10 +54,10 @@
 					</div>
 					<div class="rounded-lg bg-off-white-100 p-6">
 						<h3 class="font-calluna-sans-semibold text-lg text-pitch-black-100">
-							DJ Večeri
+							Stand-up komedija
 						</h3>
 						<p class="mt-2 font-calluna-sans-light text-gray-700 text-sm">
-							Redno organiziramo DJ sete s širokim spektrom elektronske glasbe.
+							Redno gostimo komike iz Slovenije in tujine za večere smeha in dobre volje.
 						</p>
 					</div>
 					<div class="rounded-lg bg-off-white-100 p-6">
