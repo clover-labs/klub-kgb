@@ -1,17 +1,28 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { isPastEvent, getDaysUntilEvent, generateEventUrl } from '$lib/utils/slug';
 	import ReservationModal from '$lib/components/ReservationModal.svelte';
 	import NewsletterForm from '$lib/components/NewsletterForm.svelte';
 
 	let { data }: { data: PageData } = $props();
-	const { event, referrer, relatedEvents } = data;
 
-	const isEventPast = isPastEvent(event.event_date);
-	const daysUntil = getDaysUntilEvent(event.event_date);
+	// Make data reactive with $derived
+	const event = $derived(data.event);
+	const referrer = $derived(data.referrer);
+	const relatedEvents = $derived(data.relatedEvents);
+	const isEventPast = $derived(isPastEvent(event.event_date));
+	const daysUntil = $derived(getDaysUntilEvent(event.event_date));
+
+	// Invalidate data when navigating to a new event
+	beforeNavigate(({ to, from }) => {
+		// Only invalidate if navigating between different event pages
+		if (to?.route?.id === from?.route?.id && to?.url?.pathname !== from?.url?.pathname) {
+			invalidateAll();
+		}
+	});
 
 	// Scroll to top after navigation
 	afterNavigate(() => {
