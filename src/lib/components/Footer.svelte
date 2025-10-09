@@ -108,6 +108,18 @@
 				></svg
 			>
 		</a>
+		<a
+			aria-label="X (Twitter)"
+			href="https://x.com/kgbmaribor"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<img
+				src="/x-logo.svg"
+				alt="X (Twitter)"
+				class="size-8"
+			/>
+		</a>
 				</div>
 			</div>
 
