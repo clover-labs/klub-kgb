@@ -99,7 +99,7 @@
 					O prostoru
 				</h2>
 				<p class="font-calluna-sans-light text-gray-700 leading-relaxed text-lg">
-					Klub KGB je intimni prostor v srcu Maribora, zasnovan za koncerte, DJ sete in različne kulturne dogodke.
+					Klub KGB je intimni prostor v srcu Maribora, zasnovan za koncerte, stand-up komedije in različne kulturne dogodke.
 					Prostor nudi profesionalno zvočno in svetlobno opremo ter prijetno atmosfero za do 80 obiskovalcev.
 				</p>
 			</div>
