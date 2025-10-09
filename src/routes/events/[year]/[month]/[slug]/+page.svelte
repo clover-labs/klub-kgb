@@ -230,7 +230,7 @@
 		<article class="overflow-hidden rounded-lg bg-white shadow-lg">
 			<!-- Hero Image -->
 			{#if event.image}
-				<div class="relative h-96 w-full overflow-hidden rounded-t-lg bg-pitch-black-100">
+				<div class="relative h-96 w-full overflow-hidden rounded-t-lg bg-off-white-100">
 					<img
 						src={getImageUrl(event.image)}
 						alt={event.title}
@@ -462,7 +462,7 @@
 						<article class="group overflow-hidden rounded-lg bg-white shadow-lg transition-all hover:shadow-xl">
 							<a href={generateEventUrl(relatedEvent)} class="block">
 								{#if relatedEvent.image}
-									<div class="relative h-48 overflow-hidden rounded-t-lg bg-pitch-black-100">
+									<div class="relative h-48 overflow-hidden rounded-t-lg bg-off-white-100">
 										<img
 											src={getImageUrl(relatedEvent.image)}
 											alt={relatedEvent.title}
