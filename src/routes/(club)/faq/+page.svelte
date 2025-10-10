@@ -338,7 +338,14 @@
 										<div class="border-t border-gray-200 bg-gray-50 p-6">
 											<!-- Main Answer -->
 											<div
-												class="prose prose-sm max-w-none font-calluna-sans-light text-gray-700 leading-relaxed"
+												class="prose prose-sm max-w-none font-calluna-sans-light text-gray-700 leading-relaxed
+												       prose-p:mb-4 prose-p:leading-relaxed
+												       prose-ul:list-disc prose-ul:ml-6 prose-ul:mb-4 prose-ul:space-y-2
+												       prose-ol:list-decimal prose-ol:ml-6 prose-ol:mb-4 prose-ol:space-y-2
+												       prose-li:ml-0 prose-li:pl-1
+												       prose-strong:font-calluna-sans-semibold prose-strong:text-pitch-black-100
+												       prose-headings:font-calluna-sans-bold prose-headings:text-pitch-black-100 prose-headings:mb-3"
+												style="white-space: pre-wrap;"
 											>
 												{@html question.answer}
 											</div>
