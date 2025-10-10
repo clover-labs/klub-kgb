@@ -18,6 +18,7 @@ export interface BlogPost {
   artist_description?: string; // About the artist/performer
   performers?: Performer[]; // List of performers/members
   ticket_status?: 'available' | 'coming_soon' | 'sold_out' | 'free_entry'; // Ticket availability status
+  event_language?: string; // Event language (e.g., "English", "Slovenščina", "Deutsch")
 }
 
 export interface NewsletterForm {

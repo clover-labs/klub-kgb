@@ -26,6 +26,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 					"artist_description",
 					"performers",
 					"ticket_status",
+					"event_language",
 				],
 				sort: ["event_date"], // Sort by event_date ascending (earliest events first)
 				filter: {
@@ -194,6 +195,7 @@ export async function getPastEvents(): Promise<BlogPost[]> {
 					"artist_description",
 					"performers",
 					"ticket_status",
+					"event_language",
 				],
 				sort: ["-event_date"], // Sort by event_date descending (most recent past events first)
 				filter: {
