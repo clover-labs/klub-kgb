@@ -160,6 +160,37 @@
 		}
 	}
 
+	// Language name mapping (English -> Slovenian)
+	const languageNames: Record<string, string> = {
+		'English': 'Angleščina',
+		'Russian': 'Ruščina',
+		'German': 'Nemščina',
+		'Italian': 'Italijanščina',
+		'Croatian': 'Hrvaščina',
+		'Serbian': 'Srbščina',
+		'Spanish': 'Španščina',
+		'French': 'Francoščina',
+		'Portuguese': 'Portugalščina',
+		'Dutch': 'Nizozemščina',
+		'Polish': 'Poljščina',
+		'Czech': 'Češčina',
+		'Slovak': 'Slovaščina',
+		'Hungarian': 'Madžarščina',
+		'Romanian': 'Romunščina',
+		'Bulgarian': 'Bolgarščina',
+		'Greek': 'Grščina',
+		'Turkish': 'Turščina',
+		'Arabic': 'Arabščina',
+		'Chinese': 'Kitajščina',
+		'Japanese': 'Japonščina',
+		'Korean': 'Korejščina'
+	};
+
+	// Get Slovenian language name
+	const getLanguageName = (lang: string): string => {
+		return languageNames[lang] || lang;
+	};
+
 	// Calendar helper functions
 	function formatICSDate(date: Date): string {
 		return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
@@ -339,23 +370,30 @@
 
 			<!-- Event Header -->
 			<div class="border-b border-gray-200 p-8 md:p-12">
-				<div class="mb-4 flex flex-wrap items-center gap-3">
-					<time class="text-sm font-calluna-sans-semibold uppercase tracking-wide text-mean-green-500">
-						{formatDate(event.event_date)}
-					</time>
-					{#if event.event_language && event.event_language !== 'Slovenščina'}
-						<span class="inline-flex items-center gap-1.5 rounded-full bg-prototype-orange-500/10 px-3 py-1 text-xs font-calluna-sans-semibold text-prototype-orange-500 border border-prototype-orange-500/20">
-							<svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-							</svg>
-							{event.event_language}
-						</span>
-					{/if}
-				</div>
+				<time class="mb-4 block text-sm font-calluna-sans-semibold uppercase tracking-wide text-mean-green-500">
+					{formatDate(event.event_date)}
+				</time>
 
 				<h1 class="mb-4 text-4xl font-calluna-sans-bold text-pitch-black-100 md:text-5xl">
 					{event.title}
 				</h1>
+
+				<!-- Language Notice Bar -->
+				{#if event.event_language && event.event_language !== 'Slovenščina'}
+					<div class="mb-4 flex items-start gap-3 rounded-lg bg-prototype-orange-500/10 border-l-4 border-prototype-orange-500 p-4">
+						<svg class="h-5 w-5 flex-shrink-0 text-prototype-orange-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+						</svg>
+						<div class="flex-1">
+							<p class="font-calluna-sans-semibold text-pitch-black-100 text-sm">
+								Ta dogodek bo izveden v naslednjem jeziku:
+							</p>
+							<p class="mt-1 font-calluna-sans-light text-gray-700 text-sm">
+								{getLanguageName(event.event_language)}
+							</p>
+						</div>
+					</div>
+				{/if}
 
 				<p class="text-xl font-calluna-sans-light text-gray-700">
 					{event.description}
