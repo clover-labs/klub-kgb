@@ -210,5 +210,6 @@
 	"events_no_results_period": "No events are scheduled for this period.",
 	"events_reset_filters": "Reset filters",
 	"events_stay_informed": "Stay informed",
-	"events_newsletter_cta": "Subscribe to our newsletter and be the first to know about upcoming events."
+	"events_newsletter_cta": "Subscribe to our newsletter and be the first to know about upcoming events.",
+	"event_has_ended": "Event has ended"
 }

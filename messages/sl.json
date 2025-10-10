@@ -210,5 +210,6 @@
 	"events_no_results_period": "V tem obdobju ni načrtovanih dogodkov.",
 	"events_reset_filters": "Ponastavi filtere",
 	"events_stay_informed": "Ostanite obveščeni",
-	"events_newsletter_cta": "Prijavite se na naš newsletter in bodite prvi obveščeni o prihajajočih dogodkih."
+	"events_newsletter_cta": "Prijavite se na naš newsletter in bodite prvi obveščeni o prihajajočih dogodkih.",
+	"event_has_ended": "Dogodek je končan"
 }
