@@ -3,24 +3,23 @@
 	import BlogCard from "$lib/components/BlogCard.svelte";
 	import NewsletterForm from "$lib/components/NewsletterForm.svelte";
 	import * as m from "$lib/paraglide/messages";
+	import { Head } from "svead";
+	import { createSEOConfig } from "$lib/seo";
+	import { languageTag } from "$lib/paraglide/runtime";
 
 	export let data: PageData;
 	const { blogPosts } = data;
+
+	const seo_config = createSEOConfig({
+		title: m.home_title(),
+		description: m.home_meta_description(),
+		url: "/",
+		type: "website",
+		locale: languageTag()
+	});
 </script>
 
-<svelte:head>
-	<title>{m.home_title()}</title>
-	<meta
-		name="description"
-		content={m.home_meta_description()}
-	/>
-	<meta property="og:title" content={m.home_title()} />
-	<meta
-		property="og:description"
-		content={m.home_meta_description()}
-	/>
-	<meta property="og:image" content="/hero-image.svg" />
-</svelte:head>
+<Head {seo_config} />
 
 <main class="flex flex-col gap-[5rem] md:gap-[12rem]">
 	<!-- Hero Section -->

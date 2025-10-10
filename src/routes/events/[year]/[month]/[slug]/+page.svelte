@@ -6,6 +6,9 @@
 	import { isPastEvent, getDaysUntilEvent, generateEventUrl } from '$lib/utils/slug';
 	import ReservationModal from '$lib/components/ReservationModal.svelte';
 	import NewsletterForm from '$lib/components/NewsletterForm.svelte';
+	import { Head, SchemaOrg } from 'svead';
+	import { createSEOConfig, siteConfig } from '$lib/seo';
+	import { languageTag } from '$lib/paraglide/runtime';
 
 	let { data }: { data: PageData } = $props();
 
@@ -18,6 +21,62 @@
 	const relatedEvents = $derived(data.relatedEvents);
 	const isEventPast = $derived(isPastEvent(event.event_date));
 	const daysUntil = $derived(getDaysUntilEvent(event.event_date));
+
+	// SEO Configuration
+	const eventUrl = $derived($page.url.pathname);
+	const eventImageUrl = $derived(event.image ? getImageUrl(event.image) : undefined);
+
+	const seo_config = $derived(createSEOConfig({
+		title: `${event.title} - Klub KGB Maribor`,
+		description: event.description,
+		url: eventUrl,
+		image: eventImageUrl,
+		type: 'article',
+		locale: languageTag()
+	}));
+
+	// Event Schema for structured data
+	const eventSchema = $derived({
+		'@type': 'Event',
+		name: event.title,
+		description: event.description,
+		startDate: event.event_date,
+		endDate: new Date(new Date(event.event_date).getTime() + 3 * 60 * 60 * 1000).toISOString(),
+		eventStatus: isEventPast ? 'EventScheduled' : 'EventScheduled',
+		eventAttendanceMode: 'OfflineEventAttendanceMode',
+		location: {
+			'@type': 'Place',
+			name: 'Klub KGB Maribor',
+			address: {
+				'@type': 'PostalAddress',
+				streetAddress: 'Vojašniški trg 5',
+				addressLocality: 'Maribor',
+				postalCode: '2000',
+				addressCountry: 'SI'
+			}
+		},
+		image: eventImageUrl ? [eventImageUrl] : undefined,
+		organizer: {
+			'@type': 'Organization',
+			name: 'Klub KGB Maribor',
+			url: siteConfig.url
+		},
+		...(event.link && event.ticket_status !== 'sold_out' && event.ticket_status !== 'free_entry' && {
+			offers: {
+				'@type': 'Offer',
+				url: event.link,
+				availability: event.ticket_status === 'coming_soon' ? 'PreOrder' : 'InStock'
+			}
+		}),
+		...(event.ticket_status === 'free_entry' && {
+			offers: {
+				'@type': 'Offer',
+				price: '0',
+				priceCurrency: 'EUR',
+				availability: 'InStock'
+			}
+		})
+	});
 
 	// Invalidate data when navigating to a new event
 	beforeNavigate(({ to, from }) => {
@@ -207,15 +266,8 @@
 
 </script>
 
-<svelte:head>
-	<title>{event.title} - Klub KGB Maribor</title>
-	<meta name="description" content={event.description} />
-	<meta property="og:title" content={event.title} />
-	<meta property="og:description" content={event.description} />
-	{#if event.image}
-		<meta property="og:image" content={getImageUrl(event.image)} />
-	{/if}
-</svelte:head>
+<Head {seo_config} />
+<SchemaOrg schema={eventSchema} />
 
 <main class="min-h-screen bg-off-white-100">
 	<!-- Breadcrumbs + Back Button -->

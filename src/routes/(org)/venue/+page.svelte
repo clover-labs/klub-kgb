@@ -1,5 +1,8 @@
 <script lang="ts">
 	import TableOfContents from '$lib/components/TableOfContents.svelte';
+	import { Head, SchemaOrg } from 'svead';
+	import { createSEOConfig, siteConfig } from '$lib/seo';
+	import { languageTag } from '$lib/paraglide/runtime';
 
 	// Equipment categories with expandable state
 	let expandedCategory: string | null = $state(null);
@@ -68,12 +71,57 @@
 		{ id: 'floorplan', title: 'Tloris prostora', color: 'mean-green' },
 		{ id: 'history', title: 'Zgodovina', color: 'brick-red' }
 	];
+
+	// SEO Configuration
+	const seo_config = createSEOConfig({
+		title: 'Prostor - Klub KGB Maribor',
+		description: 'Tehnične specifikacije, oprema in informacije o prostoru Kluba KGB Maribor. Kapaciteta 80 oseb, profesionalna zvočna in svetlobna oprema.',
+		url: '/venue',
+		locale: languageTag()
+	});
+
+	// LocalBusiness Schema for venue
+	const venueSchema = {
+		'@type': 'MusicVenue',
+		name: 'Klub KGB Maribor',
+		description: 'Klub KGB je intimni prostor v srcu Maribora, zasnovan za koncerte, stand-up komedije in različne kulturne dogodke.',
+		url: siteConfig.url,
+		telephone: '+386-2-123-4567',
+		address: {
+			'@type': 'PostalAddress',
+			streetAddress: 'Vojašniški trg 5',
+			addressLocality: 'Maribor',
+			postalCode: '2000',
+			addressCountry: 'SI'
+		},
+		geo: {
+			'@type': 'GeoCoordinates',
+			latitude: 46.5547,
+			longitude: 15.6467
+		},
+		maximumAttendeeCapacity: 80,
+		amenityFeature: [
+			{
+				'@type': 'LocationFeatureSpecification',
+				name: 'Sound System',
+				value: 'Professional PA system with Midas Pro console'
+			},
+			{
+				'@type': 'LocationFeatureSpecification',
+				name: 'Lighting',
+				value: 'LED lights and moving heads with DMX control'
+			},
+			{
+				'@type': 'LocationFeatureSpecification',
+				name: 'Accessibility',
+				value: 'Wheelchair accessible, no stairs'
+			}
+		]
+	};
 </script>
 
-<svelte:head>
-	<title>Prostor - Klub KGB Maribor</title>
-	<meta name="description" content="Tehnične specifikacije, oprema in informacije o prostoru Kluba KGB Maribor" />
-</svelte:head>
+<Head {seo_config} />
+<SchemaOrg schema={venueSchema} />
 
 <!-- Table of Contents -->
 <TableOfContents sections={tocSections} />

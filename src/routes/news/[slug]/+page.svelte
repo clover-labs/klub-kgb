@@ -2,6 +2,10 @@
 	import type { PageData } from './$types';
 	import { Share2, ArrowLeft, Calendar, ExternalLink } from '@lucide/svelte';
 	import { generateEventUrl } from '$lib/utils/slug';
+	import { Head, SchemaOrg } from 'svead';
+	import { createSEOConfig, siteConfig } from '$lib/seo';
+	import { languageTag } from '$lib/paraglide/runtime';
+	import { page } from '$app/stores';
 
 	let { data }: { data: PageData } = $props();
 	const { post } = data;
@@ -43,17 +47,48 @@
 			});
 		}
 	}
+
+	// SEO Configuration
+	const newsUrl = $derived($page.url.pathname);
+	const newsImageUrl = $derived(post.image ? getImageUrl(post.image) : undefined);
+
+	const seo_config = $derived(createSEOConfig({
+		title: `${post.title} - Novice - Klub KGB Maribor`,
+		description: post.description,
+		url: newsUrl,
+		image: newsImageUrl,
+		type: 'article',
+		author: 'Klub KGB Maribor',
+		locale: languageTag()
+	}));
+
+	// Article Schema for news posts
+	const articleSchema = $derived({
+		'@type': 'Article',
+		headline: post.title,
+		description: post.description,
+		image: newsImageUrl ? [newsImageUrl] : undefined,
+		datePublished: post.date_created,
+		dateModified: post.date_updated || post.date_created,
+		author: {
+			'@type': 'Organization',
+			name: 'Klub KGB Maribor',
+			url: siteConfig.url
+		},
+		publisher: {
+			'@type': 'Organization',
+			name: 'Klub KGB Maribor',
+			url: siteConfig.url,
+			logo: {
+				'@type': 'ImageObject',
+				url: `${siteConfig.url}/logo.svg`
+			}
+		}
+	});
 </script>
 
-<svelte:head>
-	<title>{post.title} - Novice - Klub KGB Maribor</title>
-	<meta name="description" content={post.description} />
-	<meta property="og:title" content={post.title} />
-	<meta property="og:description" content={post.description} />
-	{#if post.image}
-		<meta property="og:image" content={getImageUrl(post.image)} />
-	{/if}
-</svelte:head>
+<Head {seo_config} />
+<SchemaOrg schema={articleSchema} />
 
 <main class="min-h-screen bg-off-white-100">
 	<!-- Breadcrumbs + Back Button -->
