@@ -97,10 +97,18 @@ export function isUpcomingEvent(eventDate: string): boolean {
 
 /**
  * Gets the number of days until an event
+ * Compares dates only (ignoring time) to avoid timezone issues
  */
 export function getDaysUntilEvent(eventDate: string): number {
+	// Get today's date at midnight (local time)
 	const now = new Date();
+	now.setHours(0, 0, 0, 0);
+
+	// Get event date at midnight (local time)
 	const event = new Date(eventDate);
+	event.setHours(0, 0, 0, 0);
+
+	// Calculate difference in days
 	const diff = event.getTime() - now.getTime();
-	return Math.ceil(diff / (1000 * 60 * 60 * 24));
+	return Math.floor(diff / (1000 * 60 * 60 * 24));
 }
