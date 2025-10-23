@@ -80,3 +80,11 @@ export interface FAQ {
   slug: string;
   is_featured?: boolean;
 }
+
+export interface FAQSection {
+  id: string;
+  title: string;
+  icon: string;
+  color: string;
+  questions: FAQ[];
+}
