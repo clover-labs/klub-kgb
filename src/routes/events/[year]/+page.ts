@@ -24,8 +24,25 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	// Sort by date (newest first)
 	yearEvents.sort((a, b) => new Date(b.event_date).getTime() - new Date(a.event_date).getTime());
 
+	const breadcrumbs = [
+		{
+			label: 'Domov',
+			href: '/'
+		},
+		{
+			label: 'Dogodki',
+			href: '/events'
+		},
+		{
+			label: yearNum.toString(),
+			href: `/events/${yearNum}`
+		}
+	];
+
+
 	return {
+		breadcrumbs,
+		events: yearEvents,
 		year: yearNum,
-		events: yearEvents
 	};
 };

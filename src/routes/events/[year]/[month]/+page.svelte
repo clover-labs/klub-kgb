@@ -1,142 +1,128 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	import type { BlogPost } from '$lib/types';
-	import { generateEventUrl } from '$lib/utils/slug';
+  import { Button } from "$lib/components/ui/button";
+  import * as Command from "$lib/components/ui/command";
+  import type { PageData } from "./$types";
+  import EventCard from "$lib/components/EventCard.svelte";
+  import * as Empty from "$lib/components/ui/empty";
+  import * as m from "$lib/paraglide/messages";
+  import { flip } from "svelte/animate";
 
-	let { data }: { data: PageData } = $props();
-	const { year, monthName, events } = data;
+  let { data }: { data: PageData } = $props();
+  const { year, monthName, events } = data;
 
-	function formatDate(dateString: string): string {
-		const date = new Date(dateString);
-		return date.toLocaleDateString('sl-SI', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		});
-	}
+  let searchQuery = $state("");
 
-	function getImageUrl(imageId: string): string {
-		return `https://cms.cloverlabs.dev/assets/${imageId}`;
-	}
+  const filteredEvents = $derived.by(() => {
+    return events.filter((event) => {
+      return event.title.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+  });
 
-	function getFallbackImage(): string {
-		return '/placeholder-image.svg';
-	}
+  const resetFilters = () => {
+    searchQuery = "";
+  };
 </script>
 
 <svelte:head>
-	<title>{monthName} {year} - Klub KGB Maribor</title>
-	<meta name="description" content="Dogodki v {monthName} {year} v Klubu KGB Maribor" />
+  <title>{monthName} {year} - Klub KGB Maribor</title>
+  <meta
+    name="description"
+    content="Dogodki v {monthName} {year} v Klubu KGB Maribor"
+  />
 </svelte:head>
 
-<main class="min-h-screen bg-off-white-100">
-	<!-- Breadcrumbs -->
-	<div class="w-full border-b border-gray-200 bg-white px-4 py-4 md:px-12">
-		<div class="mx-auto max-w-7xl">
-			<nav class="flex items-center gap-2 text-sm font-calluna-sans-light">
-				<a href="/" class="text-gray-600 transition-colors hover:text-mean-green-500">Domov</a>
-				<svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-				<a href="/events/upcoming" class="text-gray-600 transition-colors hover:text-mean-green-500">Dogodki</a>
-				<svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-				<a href="/events/{year}" class="text-gray-600 transition-colors hover:text-mean-green-500">{year}</a>
-				<svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-				<span class="capitalize text-pitch-black-100">{monthName}</span>
-			</nav>
-		</div>
-	</div>
+<main class="flex flex-col gap-8">
+  <!-- Hero Section -->
+  <section class="h-100 flex flex-col justify-center items-center gap-6">
+    <!-- Hero content -->
+    <h1
+      class="w-full text-mean-green-500 text-3xl lg:text-6xl font-bold font-calluna-sans-bold text-center uppercase"
+    >
+      {monthName}
+      <span class="text-pitch-black-100">{year}</span>
+    </h1>
+    <p
+      class="w-full sm:max-w-1/3 text-lg lg:text-2xl font-calluna-sans-light text-center"
+    >
+      Vsi dogodki {monthName}
+      {year}
+    </p>
+  </section>
 
-	<!-- Hero Section -->
-	<section class="w-full bg-brick-red-500 px-4 py-16 md:px-12 md:py-24">
-		<div class="mx-auto max-w-7xl">
-			<h1 class="text-4xl font-calluna-sans-bold capitalize text-white md:text-5xl lg:text-6xl">
-				{monthName} {year}
-			</h1>
-			<p class="mt-4 text-lg font-calluna-sans-light text-white md:text-xl">
-				Dogodki v {monthName} {year}
-			</p>
-		</div>
-	</section>
+  <!-- Events Grid -->
+  <section class="w-full px-4 py-8 md:px-12 md:py-12">
+    <div class="mx-auto max-w-7xl flex flex-col gap-4">
+      <!-- Search Bar -->
+      <Command.Root
+        class="rounded-full md:min-w-[450px] border-1 border-slate-300 shadow-sm"
+      >
+        <Command.Input bind:value={searchQuery} />
+      </Command.Root>
 
-	<!-- Events Grid -->
-	<section class="w-full px-4 py-8 md:px-12 md:py-12">
-		<div class="mx-auto max-w-7xl">
-			{#if events.length > 0}
-				<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-					{#each events as event: BlogPost (event.id)}
-						<article class="group overflow-hidden rounded-lg bg-white shadow-lg transition-all hover:shadow-xl">
-							<a href={generateEventUrl(event)} class="block">
-								{#if event.image}
-									<div class="relative h-48 overflow-hidden rounded-t-lg bg-gray-200">
-										<img
-											src={getImageUrl(event.image)}
-											alt={event.title}
-											class="h-full w-full object-cover"
-											onerror={(e) => {
-												const target = e.target;
-												if (target && target instanceof HTMLImageElement) {
-													target.src = getFallbackImage();
-												}
-											}}
-										/>
-									</div>
-								{/if}
+      <!-- Results Count -->
+      <div
+        class="text-sm font-calluna-sans-light text-pitch-black-100/60 mb-12"
+      >
+        {filteredEvents.length}
+        {events.length === 1
+          ? m.events_count_single()
+          : filteredEvents.length === 2
+            ? m.events_count_dual()
+            : filteredEvents.length === 3 || filteredEvents.length === 4
+              ? m.events_count_few()
+              : m.events_count_many()}
+      </div>
 
-								<div class="p-6">
-									<time class="text-xs font-calluna-sans-light text-gray-500" datetime={event.event_date}>
-										{formatDate(event.event_date)}
-									</time>
-
-									<h3 class="mt-2 text-xl font-calluna-sans-semibold text-pitch-black-100 transition-colors group-hover:text-brick-red-500">
-										{event.title}
-									</h3>
-
-									{#if event.description}
-										<p class="mt-3 line-clamp-3 font-calluna-sans-light text-gray-600">
-											{event.description}
-										</p>
-									{/if}
-
-									<span class="mt-4 inline-flex items-center font-calluna-sans-semibold text-brick-red-500 transition-colors group-hover:text-brick-red-900">
-										Preberi ve
-										<svg class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-										</svg>
-									</span>
-								</div>
-							</a>
-						</article>
-					{/each}
-				</div>
-			{:else}
-				<!-- No Results State -->
-				<div class="flex flex-col items-center justify-center py-16">
-					<svg
-						class="mb-4 h-16 w-16 text-gray-300"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M12 12h.01M12 2a10 10 0 100 20 10 10 0 000-20z"
-						/>
-					</svg>
-					<h3 class="mb-2 text-xl font-calluna-sans-semibold text-gray-700">
-						Ni najdenih dogodkov
-					</h3>
-					<p class="text-center font-calluna-sans-light text-gray-600">
-						V {monthName} {year} ni bilo dogodkov.
-					</p>
-				</div>
-			{/if}
-		</div>
-	</section>
+      <div class="flex justify-between items-center">
+        <!-- Events Grid -->
+        {#if filteredEvents.length > 0}
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {#each filteredEvents as event: BlogPost (event.id)}
+              <div
+                class="group overflow-hidden rounded-lg bg-white shadow-lg transition-all hover:shadow-xl"
+                animate:flip={{ duration: 300 }}
+              >
+                <EventCard post={event} />
+              </div>
+            {/each}
+          </div>
+        {:else}
+          <Empty.Root>
+            <Empty.Header>
+              <Empty.Media variant="default">
+                <svg
+                  class="mb-4 h-16 w-16 text-gray-300"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M12 12h.01M12 2a10 10 0 100 20 10 10 0 000-20z"
+                  />
+                </svg>
+              </Empty.Media>
+              <Empty.Title>{m.events_no_results_title()}</Empty.Title>
+              <Empty.Description>
+                {#if searchQuery.trim()}
+                  {m.events_no_results_search()}
+                {:else}
+                  {m.events_no_results_period()}
+                {/if}
+              </Empty.Description>
+            </Empty.Header>
+            {#if searchQuery.trim()}
+              <Empty.Content>
+                <Button onclick={resetFilters} variant="brick-red" size="sm"
+                  >{m.events_reset_filters()}</Button
+                >
+              </Empty.Content>
+            {/if}
+          </Empty.Root>
+        {/if}
+      </div>
+    </div>
+  </section>
 </main>

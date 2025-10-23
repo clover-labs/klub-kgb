@@ -15,8 +15,33 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
 			throw error(404, 'Izvajalec ni bil najden');
 		}
 
+		const breadcrumbs = [
+			{
+				label: 'Domov',
+				href: '/'
+			},
+			{
+				label: 'Vsebina',
+				children: [
+					{
+						label: 'Novice',
+						href: '/news'
+					}
+				]
+			},
+			{
+				label: 'Izvajalci',
+				href: '/artists'
+			},
+			{
+				label: artist.stage_name,
+				href: `/artists/${artist.slug}`
+			}
+		];
+
 		return {
-			artist
+			artist,
+			breadcrumbs
 		};
 	} catch (err) {
 		console.error('Error loading artist:', err);

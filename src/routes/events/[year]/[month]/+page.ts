@@ -34,7 +34,27 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	// Get month name
 	const monthName = new Date(yearNum, monthNum, 1).toLocaleDateString('sl-SI', { month: 'long' });
 
+	const breadcrumbs = [
+		{
+			label: 'Domov',
+			href: '/'
+		},
+		{
+			label: 'Dogodki',
+			href: '/events'
+		},
+		{
+			label: yearNum.toString(),
+			href: `/events/${yearNum}`
+		},
+		{
+			label: monthName,
+			href: `/events/${yearNum}/${month}`
+		}
+	];
+
 	return {
+		breadcrumbs,
 		year: yearNum,
 		month: monthNum,
 		monthSlug: month,
