@@ -79,7 +79,7 @@
   </section>
 
   <!-- Search Section -->
-  <section class="w-full px-4 md:px-12">
+  <section class="w-full px-4 md:px-12 xl:px-0">
     <div class="mx-auto max-w-7xl flex flex-col gap-4">
       <!-- Search Bar -->
       <Command.Root
@@ -109,7 +109,7 @@
 
   {#if !isMobile}
     <section class="w-full">
-      <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-7xl px-4 md:px-12 xl:px-0">
         {#if filteredArtists.length > 0}
           <div
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 place-items-center md:place-items-start w-full"

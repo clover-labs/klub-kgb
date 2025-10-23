@@ -111,7 +111,7 @@
 <main class="flex flex-col md:gap-8 gap-4 -mt-23">
   <!-- Hero Section -->
   <section
-    class="h-140 pb-4 px-4 md:px-0 md:pb-0 md:h-100 flex flex-col justify-end md:justify-center items-center md:gap-6 gap-2 border-b-1 border-gray-200 md:h-[60vh] md:bg-cover bg-left bg-no-repeat bg-size-[250%]"
+    class="h-140 pb-4 px-4 xl:px-0 md:pb-0 md:h-100 flex flex-col justify-end md:justify-center items-center md:gap-6 gap-2 border-b-1 border-gray-200 md:h-[60vh] md:bg-cover bg-left bg-no-repeat bg-size-[250%]"
     style="background-image: url('/heroes/events.png');"
   >
     <!-- Hero content -->
@@ -130,7 +130,7 @@
 
   <!-- Filters and Search -->
   <section class="w-full">
-    <div class="mx-auto max-w-7xl flex flex-col gap-4 px-4 md:px-0">
+    <div class="mx-auto max-w-7xl flex flex-col gap-4 px-4 md:px-12 xl:px-0">
       <!-- Search Bar -->
       <Command.Root
         class="rounded-full md:min-w-[450px] border-1 border-slate-300 shadow-sm"
@@ -174,14 +174,12 @@
       </div>
     </div>
     <!-- Events Grid -->
-    <div
-      class="w-full flex justify-center flex-col gap-2 md:gap-8 mt-4 md:mt-8"
-    >
+    <div class="w-full flex justify-center flex-col gap-2 md:gap-8 mt-4">
       {#if filteredEvents.length > 0}
         {#if isMobile}
           <EventCarousel events={filteredEvents} />
         {:else}
-          <div class="mx-auto max-w-7xl">
+          <div class="mx-auto max-w-7xl px-4 xl:px-0 md:px-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {#each filteredEvents as event, index (event.id)}
                 <div
@@ -235,10 +233,10 @@
 
   <section
     id="newsletter"
-    class="w-full bg-pitch-black-200 py-20 mt-12 md:mt-18 px-4 md:px-0"
+    class="w-full bg-pitch-black-200 py-20 mt-12 md:mt-18 px-4 xl:px-0"
   >
     <div
-      class="w-full max-w-7xl mx-auto flex flex-col items-center md:gap-4 gap-2 px-4 md:px-0"
+      class="w-full max-w-7xl mx-auto flex flex-col items-center md:gap-4 gap-2 px-4 xl:px-0"
     >
       <h2
         class="text-really-white-100 text-3xl md:text-6xl font-calluna-sans-bold uppercase text-center"

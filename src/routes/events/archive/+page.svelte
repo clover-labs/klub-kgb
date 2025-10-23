@@ -91,7 +91,7 @@
 
   <!-- Filters and Search -->
   <section class="w-full">
-    <div class="mx-auto max-w-7xl flex flex-col gap-4 px-4 md:px-0">
+    <div class="mx-auto max-w-7xl flex flex-col gap-4 px-4 md:px-12 xl:px-0">
       <!-- Search Bar -->
       <Command.Root
         class="rounded-full md:min-w-[450px] border-1 border-slate-300 shadow-sm"
@@ -128,14 +128,12 @@
       </div>
     </div>
     <!-- Events Grid -->
-    <div
-      class="w-full flex justify-center flex-col gap-2 md:gap-8 mt-4 md:mt-8"
-    >
+    <div class="w-full flex justify-center flex-col gap-2 md:gap-8 mt-4">
       {#if filteredEvents.length > 0}
         {#if isMobile}
           <EventCarousel events={filteredEvents} />
         {:else}
-          <div class="mx-auto max-w-7xl">
+          <div class="mx-auto max-w-7xl px-4 xl:px-0 md:px-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {#each filteredEvents as event, index (event.id)}
                 <div

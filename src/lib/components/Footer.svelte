@@ -16,9 +16,9 @@
   ];
 </script>
 
-<footer class="w-full bg-really-white-100 rounded-lg md:px-4 md:py-12 md:px-12">
+<footer class="w-full bg-really-white-100 rounded-lg lg:px-4 lg:py-12 lg:px-12">
   <div
-    class="mx-auto max-w-7xl flex flex-col items-center md:gap-12 text-center w-full"
+    class="mx-auto max-w-7xl flex flex-col items-center lg:gap-12 text-center w-full"
   >
     <!-- Middle Level: Social Media & Funny Quote -->
     <!-- Funny Quote -->
@@ -31,9 +31,9 @@
 
     <!-- Bottom Level: Copyright & "se vidimo!" -->
     <div
-      class="rounded-none py-12 md:py-4 w-full flex flex-col-reverse items-center justify-between gap-4 border-t border-gray-200 md:flex-row bg-brick-red-200 px-8 md:rounded-lg"
+      class="rounded-none py-12 lg:py-4 w-full flex flex-col-reverse items-center justify-between gap-4 border-t border-gray-200 lg:flex-row bg-brick-red-200 px-8 lg:rounded-lg"
     >
-      <div class="flex items-center justify-between gap-4 md:flex-row flex-col">
+      <div class="flex items-center justify-between gap-4 lg:flex-row flex-col">
         <p class="font-calluna-sans-light text-pitch-black-100">
           {m.footer_copyright()}
         </p>
@@ -52,7 +52,7 @@
         </nav>
       </div>
 
-      <div class="flex items-center gap-4 flex-col-reverse md:flex-row">
+      <div class="flex items-center gap-4 flex-col-reverse lg:flex-row">
         <div class="flex gap-4 items-center">
           <a
             aria-label="Facebook"

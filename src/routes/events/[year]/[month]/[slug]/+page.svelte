@@ -608,12 +608,12 @@
           class="md:border-t md:border-pitch-black-100/10 md:py-8 py-4 md:m-1 flex flex-col gap-4"
         >
           <h2
-            class="px-4 md:px-0 text-2xl font-calluna-sans-bold text-pitch-black-100"
+            class="px-4 xl:px-0 text-2xl font-calluna-sans-bold text-pitch-black-100"
           >
             Nastopajoči
           </h2>
           <div
-            class="grid grid-cols-1 gap-0 md:gap-4 md:grid-cols-2 w-full bg-brick-red-200 md:bg-transparent"
+            class="grid grid-cols-1 gap-0 md:gap-4 md:grid-cols-2 w-full bg-brick-red-200 md:bg-transparent md:px-4 xl:px-0"
           >
             {#each event.performers as performer}
               <div
@@ -655,7 +655,7 @@
   {#if relatedEvents && relatedEvents.length > 0}
     <div class="w-full mt-12">
       <div
-        class="flex items-center justify-between border-b border-slate-300 pb-3 w-full mx-auto max-w-7xl px-4 md:px-0"
+        class="flex items-center justify-between border-b border-slate-300 pb-3 w-full mx-auto max-w-7xl px-4 xl:px-0"
       >
         <h2
           class="md:text-2xl text-lg font-calluna-sans-bold text-pitch-black-100"
@@ -684,7 +684,7 @@
   <!-- Newsletter Section -->
   <section
     id="newsletter"
-    class="w-full bg-pitch-black-200 py-20 px-4 md:px-0 mt-18 md:mt-12"
+    class="w-full bg-pitch-black-200 py-20 px-4 xl:px-0 mt-18 md:mt-12"
   >
     <h2
       class="text-really-white-100 text-3xl md:text-6xl font-calluna-sans-bold uppercase text-center"

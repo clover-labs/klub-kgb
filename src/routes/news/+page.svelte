@@ -44,12 +44,12 @@
 <main class="flex flex-col md:gap-8 gap-4 -mt-23">
   <!-- Hero Section -->
   <section
-    class="h-140 pb-4 px-4 md:px-0 md:pb-0 md:h-100 flex flex-col justify-end md:justify-center items-center md:gap-6 gap-2 border-b-1 border-gray-200 md:h-[60vh] md:bg-cover bg-right bg-no-repeat bg-size-[250%]"
+    class="h-140 pb-4 px-4 xl:px-0 md:pb-0 md:h-100 flex flex-col justify-end md:justify-center items-center md:gap-6 gap-2 border-b-1 border-gray-200 md:h-[60vh] md:bg-cover bg-right bg-no-repeat bg-size-[250%]"
     style="background-image: url('/heroes/content.png');"
   >
     <!-- Hero content -->
     <h1
-      class="w-full text-mean-green-500 text-3xl lg:text-6xl font-bold font-calluna-sans-bold text-center uppercase"
+      class="w-full text-brick-red-500 text-3xl lg:text-6xl font-bold font-calluna-sans-bold text-center uppercase"
     >
       <span class="text-pitch-black-100">Prebrskajte</span>
       Novice
@@ -62,7 +62,7 @@
   </section>
 
   <!-- Search Section -->
-  <section class="w-full px-4 md:px-12">
+  <section class="w-full px-4 md:px-12 xl:px-0">
     <div class="mx-auto max-w-7xl flex flex-col gap-4">
       <!-- Search Bar -->
       <Command.Root
@@ -92,7 +92,7 @@
     {/if}
 
     {#if !isMobile}
-      <div class="mx-auto max-w-7xl">
+      <div class="mx-auto max-w-7xl px-4 md:px-12 xl:px-0">
         {#if filteredNews.length > 0}
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {#each filteredNews as post, index (post.id)}

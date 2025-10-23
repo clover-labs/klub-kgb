@@ -67,7 +67,7 @@
   </li>
 {/snippet}
 
-<header class="sticky top-0 w-full z-[100] md:py-4">
+<header class="sticky top-0 w-full z-[100] md:py-4 md:px-12 xl:px-0">
   <div
     class="flex items-center justify-between max-w-7xl w-full md:rounded-lg py-3 md:py-1 px-4 mx-auto gap-8 liquid-glass backdrop-blur-md"
   >
@@ -119,7 +119,9 @@
       </NavigationMenu.Root>
     </div>
     <div class="hidden md:flex items-center gap-2 relative flex-grow-1">
-      <div class="relative flex items-center justify-end gap-2 w-full">
+      <div
+        class="relative hidden xl:flex items-center justify-end gap-2 w-full"
+      >
         {#if page.data.breadcrumbs}
           <Breadcrumb.Root>
             <Breadcrumb.List
@@ -171,7 +173,9 @@
           </Breadcrumb.Root>
         {/if}
       </div>
-      <LanguageSwitcher />
+      <div class="flex items-center justify-end gap-2 md:w-full xl:w-fit">
+        <LanguageSwitcher />
+      </div>
     </div>
 
     <!-- Mobile Menu Button -->

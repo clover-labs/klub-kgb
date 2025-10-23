@@ -66,7 +66,7 @@
       {m.home_events_title()}
     </h2>
     <h5
-      class="text-pitch-black-100 text-lg md:text-2xl font-calluna-sans-light text-center"
+      class="text-pitch-black-100 text-lg md:text-2xl font-calluna-sans-light text-center mb-4 md:mb-6"
     >
       {m.home_events_subtitle()}.
     </h5>

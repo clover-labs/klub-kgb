@@ -141,16 +141,16 @@
     >
       <div class="flex flex-col">
         <span
-          class="text-pitch-black-100 text-xl font-calluna-sans-bold leading-4"
+          class="text-pitch-black-100 md:text-xl font-calluna-sans-bold leading-4"
           >Vojašniški trg 5</span
         >
         <span
-          class="text-pitch-black-100 text-xl font-calluna-sans-bold leading-4"
+          class="text-pitch-black-100 md:text-xl font-calluna-sans-bold leading-4"
           >2000 Maribor</span
         >
       </div>
       <span
-        class="text-pitch-black-100 text-5xl font-calluna-sans-black leading-12"
+        class="text-pitch-black-100 text-3xl md:text-5xl font-calluna-sans-black leading-12"
         >KGB</span
       >
     </div>

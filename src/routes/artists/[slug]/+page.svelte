@@ -46,7 +46,7 @@
 <main class="md:pt-8">
   <div class="mx-auto max-w-7xl flex flex-col gap-12">
     <!-- Artist Header -->
-    <div class="overflow-hidden flex flex-col gap-12">
+    <div class="overflow-hidden flex flex-col gap-12 px-0 md:px-12 xl:px-0">
       <div class="flex flex-col gap-8 md:flex-row">
         {#if artist.image}
           <img
@@ -70,7 +70,9 @@
           </div>
         {/if}
 
-        <div class="flex flex-1 flex-col justify-center gap-2 px-4 md:px-0">
+        <div
+          class="flex flex-1 flex-col justify-center gap-2 px-4 md:px-12 xl:px-0"
+        >
           <div class="flex items-center gap-2">
             <h1
               class="text-4xl font-calluna-sans-bold text-pitch-black-100 md:text-5xl"
@@ -173,7 +175,7 @@
       </div>
 
       <!-- Bio -->
-      <div class="flex flex-col gap-4 max-w-5xl px-4 md:px-0">
+      <div class="flex flex-col gap-4 max-w-5xl px-4 xl:px-0">
         {#if artist.bio || artist.description}
           <h2 class="text-2xl font-calluna-sans-bold text-pitch-black-100">
             O <span class="text-brick-red-500">Izvajalcu</span>
@@ -194,7 +196,7 @@
 
       <!-- Associated Acts -->
       {#if artist.associated_acts && artist.associated_acts.length > 0}
-        <div class="border-t border-gray-200 p-8 md:p-12">
+        <div class="border-t border-gray-200 p-8 xl:p-12">
           <h2 class="mb-6 text-2xl font-calluna-sans-bold text-pitch-black-100">
             Povezani izvajalci
           </h2>
@@ -248,7 +250,7 @@
     {#if artist.upcoming_events && artist.upcoming_events.length > 0}
       <div class="">
         <h2
-          class="mb-6 px-4 md:px-0 text-2xl font-calluna-sans-bold text-pitch-black-100 border-b border-gray-200 pb-2"
+          class="mb-6 px-4 md:px-12 xl:px-0 text-2xl font-calluna-sans-bold text-pitch-black-100 border-b border-gray-200 pb-2"
         >
           Prihajajoči <span class="text-mean-green-500">Dogodki</span>
         </h2>
@@ -260,7 +262,7 @@
     {#if artist.past_events && artist.past_events.length > 0}
       <div class="">
         <h2
-          class="mb-6 px-4 md:px-0 text-2xl font-calluna-sans-bold text-pitch-black-100 border-b border-gray-200 pb-2"
+          class="mb-6 px-4 md:px-12 xl:px-0 text-2xl font-calluna-sans-bold text-pitch-black-100 border-b border-gray-200 pb-2"
         >
           Pretekli <span class="text-brick-red-500">Dogodki</span>
         </h2>
