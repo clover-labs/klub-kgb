@@ -248,7 +248,7 @@
     {#if artist.upcoming_events && artist.upcoming_events.length > 0}
       <div class="">
         <h2
-          class="mb-6 px-4 md:px-0 text-2xl font-calluna-sans-bold text-pitch-black-100"
+          class="mb-6 px-4 md:px-0 text-2xl font-calluna-sans-bold text-pitch-black-100 border-b border-gray-200 pb-2"
         >
           Prihajajoči <span class="text-mean-green-500">Dogodki</span>
         </h2>
@@ -260,7 +260,7 @@
     {#if artist.past_events && artist.past_events.length > 0}
       <div class="">
         <h2
-          class="mb-6 px-4 md:px-0 text-2xl font-calluna-sans-bold text-pitch-black-100"
+          class="mb-6 px-4 md:px-0 text-2xl font-calluna-sans-bold text-pitch-black-100 border-b border-gray-200 pb-2"
         >
           Pretekli <span class="text-brick-red-500">Dogodki</span>
         </h2>

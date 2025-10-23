@@ -69,7 +69,7 @@
 
 <header class="sticky top-0 w-full z-[100] md:py-4">
   <div
-    class="flex items-center justify-between max-w-7xl w-full md:rounded-lg py-3 md:py-1 px-4 mx-auto gap-8 liquid-glass"
+    class="flex items-center justify-between max-w-7xl w-full md:rounded-lg py-3 md:py-1 px-4 mx-auto gap-8 liquid-glass backdrop-blur-md"
   >
     <div class="flex items-center gap-2">
       <a href="/" class="flex-shrink-0 flex items-center gap-2">

@@ -15,7 +15,7 @@
     opts={{
       align: events.length > 3 ? "start" : "center",
     }}
-    class={`relative mt-4 md:mt-8 ${events.length > 3 ? "max-w-full mx-auto" : "max-w-7xl mx-auto"}`}
+    class={`relative ${events.length > 3 ? "max-w-full mx-auto" : "max-w-7xl mx-auto"}`}
   >
     <Carousel.Content
       class={`${events.length > 3 ? "md:mr-[6.75rem] mr-2 -ml-5 md:ml-15" : "md:-ml-12 mr-2 md:mr-0"}`}
